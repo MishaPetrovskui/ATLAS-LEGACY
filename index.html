@@ -22,8 +22,12 @@
   --azure: #2a5c7a;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--pale);color:var(--ink);overflow-x:hidden;cursor:none}
+html{scroll-behavior:smooth; overscroll-behavior-y: none;}
+body{font-family:'DM Sans',sans-serif;background:var(--pale);color:var(--ink);overflow-x:hidden;cursor:none; overscroll-behavior: none;}
+
+/* when a modal/overlay is open we add this class to lock the background */
+.no-scroll{overflow:hidden !important;position:fixed;width:100%;height:100%;}
+
 
 /* ─── CURSOR FIX: visible on any background ─── */
 #cur{
@@ -45,8 +49,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--pale);color:var(--ink);ov
 #prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--rust),var(--gold));z-index:300;transition:width .1s}
 
 /* PAGE SYSTEM */
-.page{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;pointer-events:none}
-.page.active{opacity:1;visibility:visible;pointer-events:auto} /* keeps page in flow to avoid blank during fast swipe on mobile */
+.page{display:none;opacity:0;transition:opacity .4s}
+.page.active{display:block;opacity:1}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;background:transparent;transition:all .4s}
@@ -88,7 +92,7 @@ nav.solid {
 .mob-menu-btn span{display:block;width:24px;height:1px;background:currentColor;transition:all .3s}
 
 /* SEARCH OVERLAY */
-.search-overlay{position:fixed;inset:0;z-index:400;background:rgba(13,12,11,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.search-overlay{position:fixed;inset:0;z-index:400;background:rgba(13,12,11,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;overscroll-behavior: none;}
 .search-overlay.open{opacity:1;pointer-events:all}
 .search-wrap{width:min(700px,90vw)}
 .search-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;text-align:center}
@@ -1696,8 +1700,24 @@ const searchData = [
   {tag:'Оман',title:'Маскат і дюни Вахіба',id:'oman'},
   {tag:'Португалія',title:'Лісабон і Алгарве',id:'portugal'},
 ];
-function openSearch(){document.getElementById('searchOverlay').classList.add('open');setTimeout(()=>document.getElementById('searchInput').focus(),100);}
-function closeSearch(){document.getElementById('searchOverlay').classList.remove('open');}
+function openSearch(){
+  document.getElementById('searchOverlay').classList.add('open');
+  // lock the background scroll so a fast swipe doesn't reveal a blank page
+  document.body.classList.add('no-scroll');
+  setTimeout(()=>document.getElementById('searchInput').focus(),100);
+}
+function closeSearch(){
+  document.getElementById('searchOverlay').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+// also allow touch taps outside the inner box to close overlay on mobiles
+const searchOverlay = document.getElementById('searchOverlay');
+searchOverlay.addEventListener('click', e => {
+  if (e.target === searchOverlay) closeSearch();
+});
+searchOverlay.addEventListener('touchstart', e => {
+  if (e.target === searchOverlay) closeSearch();
+});
 document.getElementById('searchInput').addEventListener('input', function(){
   const q = this.value.toLowerCase().trim();
   const res = document.getElementById('searchResults');
@@ -1706,8 +1726,6 @@ document.getElementById('searchInput').addEventListener('input', function(){
   res.innerHTML = hits.length ? hits.map(h=>`<div class="s-result" onclick="closeSearch();openArticle('${h.id}')"><span class="s-result-tag">${h.tag}</span><span class="s-result-title">${h.title}</span></div>`).join('') : '<div class="s-result"><span class="s-result-tag">—</span><span class="s-result-title" style="color:var(--mid)">Нічого не знайдено</span></div>';
 });
 document.addEventListener('keydown', e => { if(e.key==='Escape'){closeSearch();closeArticle();closeLb();closeQuestModal();} });
-// allow tapping outside search box to close overlay on mobile
-document.getElementById('searchOverlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeSearch(); });
 
 // ─── SECRET QUEST BUTTON ───
 function openQuestModal() {
