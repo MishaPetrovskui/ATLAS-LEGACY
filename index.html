@@ -45,8 +45,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--pale);color:var(--ink);ov
 #prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--rust),var(--gold));z-index:300;transition:width .1s}
 
 /* PAGE SYSTEM */
-.page{display:none;opacity:0;transition:opacity .4s}
-.page.active{display:block;opacity:1}
+.page{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;pointer-events:none}
+.page.active{opacity:1;visibility:visible;pointer-events:auto} /* keeps page in flow to avoid blank during fast swipe on mobile */
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;background:transparent;transition:all .4s}
@@ -1387,7 +1387,7 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
     <div class="dest-full-card rv d1" data-region="middle"><img src="img/Оман.jpg" alt="Оман"><div class="dfc-ov"><p class="dfc-country">Близький Схід · Оман</p><h3 class="dfc-name">Маскат і дюни Вахіба</h3><p class="dfc-desc">Арабська екзотика без масового туризму.</p><div class="dfc-tags"><span class="dfc-tag-item">Жовтень–Квітень</span><span class="dfc-tag-item">7–10 днів</span></div></div><button class="dfc-btn" onclick="openArticle('oman')">Відкрити гід</button></div>
     <div class="dest-full-card rv d2" data-region="europe"><img src="img/Грузія.jpg" alt="Грузія"><div class="dfc-ov"><p class="dfc-country">Кавказ · Грузія</p><h3 class="dfc-name">Тбілісі і Військово-Грузинська дорога</h3><p class="dfc-desc">Вино, хачапурі та найкрасивіші гори світу.</p><div class="dfc-tags"><span class="dfc-tag-item">Цілий рік</span><span class="dfc-tag-item">5–14 днів</span></div></div><button class="dfc-btn" onclick="openArticle('georgia')">Відкрити гід</button></div>
     <div class="dest-full-card rv" data-region="europe"><img src="img/Норвегія.jpg" alt="Норвегія"><div class="dfc-ov"><p class="dfc-country">Скандинавія · Норвегія</p><h3 class="dfc-name">Фіорди та острови Лофотени</h3><p class="dfc-desc">Білі ночі, рибальські села та неймовірні пейзажі.</p><div class="dfc-tags"><span class="dfc-tag-item">Літо</span><span class="dfc-tag-item">Зима</span></div></div><button class="dfc-btn" onclick="openArticle('norway')">Відкрити гід</button></div>
-    <div class="dest-full-card rv d1" data-region="africa"><img src="img/Марокко.jpg" alt="Марокко"><div class="dfc-ov"><p class="dfc-country">Африка · Марокко</p><h3 class="dfc-name">Медини і Сахара</h3><p class="dfc-desc">Від лабіринтів Фесу до зоряного неба над дюнами.</p><div class="dfc-tags"><span class="dfc-tag-item">Осінь</span><span class="dfc-tag-item">Весна</span></div></div><button class="dfc-btn" onclick="openArticle('fes')">Відкрити гід</button></div>
+    <div class="dest-full-card rv d1" data-region="africa"><img src="img/цитата-право.jpg" alt="Марокко"><div class="dfc-ov"><p class="dfc-country">Африка · Марокко</p><h3 class="dfc-name">Медини і Сахара</h3><p class="dfc-desc">Від лабіринтів Фесу до зоряного неба над дюнами.</p><div class="dfc-tags"><span class="dfc-tag-item">Осінь</span><span class="dfc-tag-item">Весна</span></div></div><button class="dfc-btn" onclick="openArticle('fes')">Відкрити гід</button></div>
     <div class="dest-full-card rv d2" data-region="asia"><img src="img/Японія.jpg" alt="Японія"><div class="dfc-ov"><p class="dfc-country">Азія · Японія</p><h3 class="dfc-name">Кіото — Токіо — Нара</h3><p class="dfc-desc">Два міста, два світи: медитативний і технологічний.</p><div class="dfc-tags"><span class="dfc-tag-item">Весна</span><span class="dfc-tag-item">Осінь</span></div></div><button class="dfc-btn" onclick="openArticle('kyoto')">Відкрити гід</button></div>
     <div class="dest-full-card rv" data-region="america"><img src="img/Патагонія.jpg" alt="Патагонія"><div class="dfc-ov"><p class="dfc-country">Південна Америка · Чилі</p><h3 class="dfc-name">Патагонія: Торрес-дель-Пайне</h3><p class="dfc-desc">Край землі, початок пригоди.</p><div class="dfc-tags"><span class="dfc-tag-item">Листопад–Березень</span><span class="dfc-tag-item">7–12 днів</span></div></div><button class="dfc-btn" onclick="openArticle('patagonia')">Відкрити гід</button></div>
     <div class="dest-full-card rv d1" data-region="asia"><img src="img/Мальдіви.jpg" alt="Мальдіви"><div class="dfc-ov"><p class="dfc-country">Індійський океан · Мальдіви</p><h3 class="dfc-name">Острови без туристичного ажіотажу</h3><p class="dfc-desc">Гостьові будинки на місцевих островах.</p><div class="dfc-tags"><span class="dfc-tag-item">Листопад–Квітень</span><span class="dfc-tag-item">Бюджетно</span></div></div><button class="dfc-btn" onclick="openArticle('maldives')">Відкрити гід</button></div>
@@ -1408,7 +1408,7 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
   <div class="guides-page">
     <div class="guides-featured rv">
       <div class="gf-card" onclick="openArticle('fes')">
-        <img src="img/Марокко.jpg" alt="Марокко">
+        <img src="img/цитата-право.jpg" alt="Марокко">
         <div class="gf-ov"><p class="gf-tag">Cover Story · 14 хв</p><h3>Лабіринти Фесу: загублений у часі</h3><p>Медина Фесу — найбільше пішохідне місто світу, де шкіряні майстерні не змінилися з XII століття.</p><div class="gf-meta"><span>Марокко</span><span>·</span><span>Репортаж</span></div></div>
       </div>
       <div class="gf-card" onclick="openArticle('patagonia')">
@@ -1706,6 +1706,8 @@ document.getElementById('searchInput').addEventListener('input', function(){
   res.innerHTML = hits.length ? hits.map(h=>`<div class="s-result" onclick="closeSearch();openArticle('${h.id}')"><span class="s-result-tag">${h.tag}</span><span class="s-result-title">${h.title}</span></div>`).join('') : '<div class="s-result"><span class="s-result-tag">—</span><span class="s-result-title" style="color:var(--mid)">Нічого не знайдено</span></div>';
 });
 document.addEventListener('keydown', e => { if(e.key==='Escape'){closeSearch();closeArticle();closeLb();closeQuestModal();} });
+// allow tapping outside search box to close overlay on mobile
+document.getElementById('searchOverlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeSearch(); });
 
 // ─── SECRET QUEST BUTTON ───
 function openQuestModal() {
@@ -1728,7 +1730,7 @@ const articles = {
   fes: {
     tag:'Cover Story · Африка · Марокко',
     title:'Лабіринти Фесу: загублений у часі',
-    img:'img/Марокко.jpg',
+    img:'img/цитата-право.jpg',
     meta:['14 хв читання','Репортаж','Листопад 2025'],
     body:`<p>Я приїхав до Фесу в листопаді, коли туристи вже роз'їхалися, а торговці медини перестали посміхатися по обов'язку. Таксист висадив мене біля воріт Bab Boujloud — синіх воріт з одного боку і зелених з іншого — і сказав: «Удачі. Карти не допоможуть». Він мав рацію.</p>
     <h3>Медина, яка не змінилася за 1000 років</h3>
