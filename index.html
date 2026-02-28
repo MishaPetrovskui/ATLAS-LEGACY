@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATLAS — Журнал Путешественника</title>
+<title>ATLAS — Журнал Мандрівника</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -24,10 +24,21 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--pale);color:var(--ink);overflow-x:hidden;cursor:none}
 
-/* CURSOR */
-#cur{position:fixed;top:0;left:0;z-index:9999;width:12px;height:12px;background:var(--rust);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:width .15s,height .15s,background .15s,border-radius .15s;mix-blend-mode:multiply}
-#cur.big{width:50px;height:50px;background:rgba(201,149,42,.4);border-radius:50%}
-#cur.txt{width:80px;height:80px;background:transparent;border:1px solid var(--gold);border-radius:50%}
+/* ─── CURSOR FIX: visible on any background ─── */
+#cur{
+  position:fixed;top:0;left:0;z-index:9999;
+  width:14px;height:14px;
+  background:var(--rust);
+  border:2px solid #fff;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:width .15s,height .15s,background .15s,border-radius .15s,border-color .15s;
+  mix-blend-mode:normal;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.5);
+}
+#cur.big{width:52px;height:52px;background:rgba(201,149,42,.5);border:2px solid var(--gold);border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,0.3)}
+#cur.txt{width:82px;height:82px;background:transparent;border:2px solid var(--gold);border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,0.2)}
 
 /* PROGRESS */
 #prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--rust),var(--gold));z-index:300;transition:width .1s}
@@ -81,7 +92,7 @@ nav.solid{background:rgba(13,12,11,.95);backdrop-filter:blur(8px);padding:14px 5
 .slabel{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--mid);margin-bottom:12px}
 .stitle{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,54px);font-weight:700;line-height:1.05;color:var(--ink)}
 
-/* ──────────── HOME PAGE ──────────── */
+/* ─── HOME PAGE ─── */
 .hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end}
 .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1800&q=80') center/cover;animation:hzoom 18s ease-out forwards}
 @keyframes hzoom{from{transform:scale(1.1)}to{transform:scale(1)}}
@@ -126,7 +137,6 @@ nav.solid{background:rgba(13,12,11,.95);backdrop-filter:blur(8px);padding:14px 5
 .readlink:hover{gap:12px}
 .readlink svg{width:14px;height:14px}
 
-/* ALL ARTICLES CTA */
 .view-all{font-size:10px;letter-spacing:3px;text-transform:uppercase;background:none;border:1px solid var(--warm);color:var(--mid);padding:10px 24px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
 .view-all:hover{border-color:var(--ink);color:var(--ink)}
 
@@ -233,7 +243,7 @@ nav.solid{background:rgba(13,12,11,.95);backdrop-filter:blur(8px);padding:14px 5
 .nl-submit:hover{background:var(--rust)}
 .nl-note{font-size:11px;color:var(--mid);font-weight:300}
 
-/* ──────────── DESTINATIONS PAGE ──────────── */
+/* ─── DESTINATIONS PAGE ─── */
 .page-hero{position:relative;height:60vh;overflow:hidden;display:flex;align-items:flex-end}
 .page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.7)}
 .page-hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,12,11,.9),transparent)}
@@ -256,7 +266,7 @@ nav.solid{background:rgba(13,12,11,.95);backdrop-filter:blur(8px);padding:14px 5
 .dfc-btn{position:absolute;top:20px;right:20px;z-index:3;background:var(--rust);color:var(--cream);border:none;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;cursor:pointer;font-family:'DM Sans',sans-serif;opacity:0;transition:opacity .3s}
 .dest-full-card:hover .dfc-btn{opacity:1}
 
-/* ──────────── GUIDES PAGE ──────────── */
+/* ─── GUIDES PAGE ─── */
 .guides-page{padding:80px 56px}
 .guides-featured{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3px}
 .gf-card{position:relative;overflow:hidden;height:460px;cursor:pointer}
@@ -279,7 +289,7 @@ nav.solid{background:rgba(13,12,11,.95);backdrop-filter:blur(8px);padding:14px 5
 .gl-body p{font-size:13px;color:#6a5e50;line-height:1.6;font-weight:300;font-family:'Cormorant Garamond',serif}
 .gl-foot{display:flex;justify-content:space-between;padding-top:14px;margin-top:14px;border-top:1px solid var(--warm);font-size:9px;color:var(--mid)}
 
-/* ──────────── QUIZ PAGE ──────────── */
+/* ─── QUIZ PAGE ─── */
 .quiz-page{padding:100px 56px;min-height:80vh;display:flex;flex-direction:column;align-items:center}
 .quiz-wrap{max-width:720px;width:100%;text-align:center}
 .quiz-wrap .stitle{text-align:center;margin-bottom:12px}
@@ -292,7 +302,6 @@ nav.solid{background:rgba(13,12,11,.95);backdrop-filter:blur(8px);padding:14px 5
 .quiz-opt:hover{border-color:var(--gold);background:var(--warm)}
 .quiz-opt.selected{border-color:var(--rust);background:rgba(184,76,43,.06)}
 .quiz-opt-icon{font-size:28px;line-height:1}
-.quiz-opt-text{}
 .quiz-opt-title{font-weight:500;font-size:15px;margin-bottom:3px}
 .quiz-opt-sub{font-size:12px;color:var(--mid);font-weight:300}
 .quiz-prog{display:flex;gap:6px;justify-content:center;margin-bottom:44px}
@@ -319,7 +328,7 @@ nav.solid{background:rgba(13,12,11,.95);backdrop-filter:blur(8px);padding:14px 5
 .qr-retry{padding:12px 30px;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;background:none;border:1px solid var(--mid);color:var(--mid);font-family:'DM Sans',sans-serif;transition:all .2s}
 .qr-retry:hover{border-color:var(--ink);color:var(--ink)}
 
-/* ──────────── CALCULATOR PAGE ──────────── */
+/* ─── CALCULATOR PAGE ─── */
 .calc-page{padding:80px 56px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 .calc-form{background:var(--cream);padding:48px}
 .calc-result{position:sticky;top:100px}
@@ -347,7 +356,6 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:16px;height:16px;b
 .calc-toggle.on .ct-check::after{left:19px}
 .calc-btn{width:100%;background:var(--ink);color:var(--cream);border:none;padding:18px;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:28px;transition:background .25s}
 .calc-btn:hover{background:var(--rust)}
-/* result panel */
 .calc-result-panel{background:var(--ink);padding:44px;color:var(--cream)}
 .crp-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
 .crp-total{margin-bottom:36px}
@@ -366,7 +374,7 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:16px;height:16px;b
 .crp-tip-item{display:flex;gap:10px;margin-bottom:12px;font-size:12px;line-height:1.5;color:rgba(245,240,232,.6)}
 .crp-tip-item::before{content:'—';color:var(--rust);flex-shrink:0}
 
-/* ──────────── GALLERY PAGE ──────────── */
+/* ─── GALLERY PAGE ─── */
 .gallery-page{padding:80px 56px}
 .gallery-cats{display:flex;gap:3px;margin-bottom:3px}
 .gallery-grid{columns:4;gap:3px;padding-bottom:80px}
@@ -393,7 +401,7 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:16px;height:16px;b
 .lb-next{right:24px}
 .lb-prev:hover,.lb-next:hover{border-color:var(--gold);color:var(--cream)}
 
-/* ──────────── ARTICLE MODAL ──────────── */
+/* ─── ARTICLE MODAL ─── */
 .article-modal{position:fixed;inset:0;z-index:450;background:rgba(13,12,11,.9);overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .3s}
 .article-modal.open{opacity:1;pointer-events:all}
 .am-inner{max-width:800px;margin:60px auto;background:var(--pale);padding:64px;position:relative}
@@ -414,7 +422,7 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:16px;height:16px;b
 .am-share-btn{border:1px solid var(--warm);padding:8px 20px;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--mid);transition:all .2s}
 .am-share-btn:hover{border-color:var(--ink);color:var(--ink)}
 
-/* ──────────── FOOTER ──────────── */
+/* ─── FOOTER ─── */
 footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:64px;padding-bottom:60px;border-bottom:1px solid rgba(245,240,232,.07);margin-bottom:40px}
 .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:54px;letter-spacing:8px;color:var(--cream);margin-bottom:14px}
@@ -439,6 +447,165 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
 #btt{position:fixed;bottom:40px;right:48px;z-index:100;width:48px;height:48px;background:var(--ink);border:1px solid rgba(245,240,232,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:all .3s;font-size:18px;color:var(--cream)}
 #btt.show{opacity:1;pointer-events:all}
 #btt:hover{background:var(--rust);border-color:var(--rust)}
+
+/* ─── HIDDEN QUEST BUTTON ─── */
+/* Sits in the footer, extremely subtle — blends into background */
+#secretBtn {
+  position:absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.04;
+  transition: opacity 0.4s, transform 0.4s;
+  z-index: 10;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#secretBtn::after {
+  content: '✦';
+  font-size: 10px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+#secretBtn:hover {
+  opacity: 0.2;
+  transform: translateX(-50%) rotate(45deg) scale(1.3);
+}
+
+/* ─── QUEST TOAST notification ─── */
+#questToast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink);
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  padding: 16px 32px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  letter-spacing: 1px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+  z-index: 9998;
+  white-space: nowrap;
+}
+#questToast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─── QUEST MODAL ─── */
+#questModal {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  background: rgba(13,12,11,.98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+#questModal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.qm-inner {
+  max-width: 520px;
+  width: 90%;
+  text-align: center;
+  padding: 60px 40px;
+  border: 1px solid rgba(201,149,42,.3);
+  position: relative;
+  animation: fup 0.5s both;
+}
+.qm-ornament {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  letter-spacing: 10px;
+  color: rgba(201,149,42,.08);
+  line-height: 1;
+  margin-bottom: -10px;
+}
+.qm-label {
+  font-size: 8px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.qm-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 42px);
+  color: var(--cream);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.qm-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: rgba(245,240,232,.6);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+.qm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 16px 40px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  transition: all .25s;
+  margin-bottom: 16px;
+}
+.qm-btn:hover { background: var(--cream); gap: 20px; }
+.qm-close-btn {
+  display: block;
+  margin: 12px auto 0;
+  background: none;
+  border: none;
+  color: rgba(245,240,232,.3);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: color .2s;
+}
+.qm-close-btn:hover { color: var(--cream); }
+.qm-stars {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-size: 20px;
+  animation: starAppear 1s both;
+}
+@keyframes starAppear {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
 
 @media(max-width:1200px){
   .dest-grid,.dest-full-grid{grid-template-columns:repeat(2,1fr)}
@@ -486,14 +653,32 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
 
 <div id="cur"></div>
 <div id="prog"></div>
-<div id="btt" title="Наверх">↑</div>
+<div id="btt" title="Нагору">↑</div>
+
+<!-- QUEST TOAST -->
+<div id="questToast">✦ Ви знайшли щось особливе...</div>
+
+<!-- QUEST MODAL -->
+<div id="questModal">
+  <div class="qm-inner">
+    <div class="qm-ornament">ATLAS</div>
+    <div class="qm-stars">✦ ✦ ✦</div>
+    <p class="qm-label">Секретний маршрут розблоковано</p>
+    <h2 class="qm-title">Вітаємо,<br>справжній мандрівник</h2>
+    <p class="qm-text">Ви знайшли приховану кнопку, яку бачать лише найуважніші читачі ATLAS. Для вас — особливий маршрут, який змінить усе.</p>
+    <a class="qm-btn" href="https://youtu.be/dQw4w9WgXcQ?si=3eTdwkXWJLqfQqy4" target="_blank">
+      Відкрити секретний маршрут →
+    </a>
+    <button class="qm-close-btn" onclick="closeQuestModal()">Закрити</button>
+  </div>
+</div>
 
 <!-- SEARCH OVERLAY -->
 <div class="search-overlay" id="searchOverlay">
   <div class="search-wrap">
-    <p class="search-label">Поиск по журналу</p>
+    <p class="search-label">Пошук по журналу</p>
     <div class="search-input-row">
-      <input type="text" id="searchInput" placeholder="Япония, бюджет, пляж…" autocomplete="off">
+      <input type="text" id="searchInput" placeholder="Японія, бюджет, пляж…" autocomplete="off">
       <button class="search-close" onclick="closeSearch()">✕</button>
     </div>
     <div class="search-results" id="searchResults"></div>
@@ -520,10 +705,10 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
 
 <!-- MOBILE MENU -->
 <div class="mob-overlay" id="mobMenu">
-  <button class="mob-nav-btn" onclick="goPage('home');closeMob()">Главная</button>
-  <button class="mob-nav-btn" onclick="goPage('destinations');closeMob()">Направления</button>
-  <button class="mob-nav-btn" onclick="goPage('guides');closeMob()">Гиды</button>
-  <button class="mob-nav-btn" onclick="goPage('quiz');closeMob()">Квиз</button>
+  <button class="mob-nav-btn" onclick="goPage('home');closeMob()">Головна</button>
+  <button class="mob-nav-btn" onclick="goPage('destinations');closeMob()">Напрямки</button>
+  <button class="mob-nav-btn" onclick="goPage('guides');closeMob()">Гіди</button>
+  <button class="mob-nav-btn" onclick="goPage('quiz');closeMob()">Квіз</button>
   <button class="mob-nav-btn" onclick="goPage('calculator');closeMob()">Калькулятор</button>
   <button class="mob-nav-btn" onclick="goPage('gallery');closeMob()">Галерея</button>
 </div>
@@ -532,20 +717,20 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
 <nav id="nav">
   <span class="logo" onclick="goPage('home')">ATLAS</span>
   <ul class="nav-links">
-    <li><button class="nav-btn active" id="nb-home" onclick="goPage('home')">Главная</button></li>
-    <li><button class="nav-btn" id="nb-destinations" onclick="goPage('destinations')">Направления</button></li>
-    <li><button class="nav-btn" id="nb-guides" onclick="goPage('guides')">Гиды</button></li>
-    <li><button class="nav-btn" id="nb-quiz" onclick="goPage('quiz')">Квиз</button></li>
+    <li><button class="nav-btn active" id="nb-home" onclick="goPage('home')">Головна</button></li>
+    <li><button class="nav-btn" id="nb-destinations" onclick="goPage('destinations')">Напрямки</button></li>
+    <li><button class="nav-btn" id="nb-guides" onclick="goPage('guides')">Гіди</button></li>
+    <li><button class="nav-btn" id="nb-quiz" onclick="goPage('quiz')">Квіз</button></li>
     <li><button class="nav-btn" id="nb-calculator" onclick="goPage('calculator')">Калькулятор</button></li>
     <li><button class="nav-btn" id="nb-gallery" onclick="goPage('gallery')">Галерея</button></li>
   </ul>
   <div class="nav-actions">
-    <button class="nav-search-btn" onclick="openSearch()" title="Поиск">⌕</button>
+    <button class="nav-search-btn" onclick="openSearch()" title="Пошук">⌕</button>
     <button class="mob-menu-btn" id="mobBtn" onclick="toggleMob()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ══════════════════════ HOME PAGE ══════════════════════ -->
+<!-- ══════ HOME PAGE ══════ -->
 <div class="page active" id="page-home">
 
   <section class="hero">
@@ -553,35 +738,35 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
     <div class="hero-ov"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">
-        <span class="hero-tag">Выпуск 2026 — Зима</span>
+        <span class="hero-tag">Випуск 2026 — Зима</span>
         <span class="hero-issue">/ №48</span>
       </div>
-      <h1 class="hero-title">Мир<br>без <em>границ</em></h1>
-      <p class="hero-sub">Путешествие — это не место назначения, а состояние духа. Мы ищем маршруты, которые меняют вас изнутри.</p>
+      <h1 class="hero-title">Світ<br>без <em>кордонів</em></h1>
+      <p class="hero-sub">Подорож — це не пункт призначення, а стан духу. Ми шукаємо маршрути, які змінюють вас зсередини.</p>
       <div class="hero-actions">
-        <button class="btn-primary" onclick="goPage('guides')">Читать журнал <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
-        <button class="btn-ghost" onclick="goPage('quiz')">Куда мне ехать? →</button>
+        <button class="btn-primary" onclick="goPage('guides')">Читати журнал <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        <button class="btn-ghost" onclick="goPage('quiz')">Куди мені їхати? →</button>
       </div>
     </div>
     <div class="hero-stats">
-      <div class="h-stat"><span class="h-stat-num">250+</span><span class="h-stat-label">Маршрутов</span></div>
-      <div class="h-stat"><span class="h-stat-num">68</span><span class="h-stat-label">Стран</span></div>
-      <div class="h-stat"><span class="h-stat-num">18K</span><span class="h-stat-label">Читателей</span></div>
+      <div class="h-stat"><span class="h-stat-num">250+</span><span class="h-stat-label">Маршрутів</span></div>
+      <div class="h-stat"><span class="h-stat-num">68</span><span class="h-stat-label">Країн</span></div>
+      <div class="h-stat"><span class="h-stat-num">18K</span><span class="h-stat-label">Читачів</span></div>
     </div>
     <div class="hero-scroll"><span>Scroll</span></div>
   </section>
 
   <div class="ticker">
     <div class="ticker-inner" id="tickerInner">
-      <span>Исландия</span><span class="ticker-sep">◆</span><span>Марокко</span><span class="ticker-sep">◆</span><span>Патагония</span><span class="ticker-sep">◆</span><span>Киото</span><span class="ticker-sep">◆</span><span>Норвегия</span><span class="ticker-sep">◆</span><span>Грузия</span><span class="ticker-sep">◆</span><span>Оман</span><span class="ticker-sep">◆</span><span>Новая Зеландия</span><span class="ticker-sep">◆</span><span>Эфиопия</span><span class="ticker-sep">◆</span><span>Перу</span><span class="ticker-sep">◆</span><span>Португалия</span><span class="ticker-sep">◆</span><span>Монголия</span><span class="ticker-sep">◆</span><span>Исландия</span><span class="ticker-sep">◆</span><span>Марокко</span><span class="ticker-sep">◆</span><span>Патагония</span><span class="ticker-sep">◆</span><span>Киото</span><span class="ticker-sep">◆</span><span>Норвегия</span><span class="ticker-sep">◆</span><span>Грузия</span><span class="ticker-sep">◆</span><span>Оман</span><span class="ticker-sep">◆</span><span>Новая Зеландия</span><span class="ticker-sep">◆</span><span>Эфиопия</span><span class="ticker-sep">◆</span><span>Перу</span><span class="ticker-sep">◆</span><span>Португалия</span><span class="ticker-sep">◆</span><span>Монголия</span><span class="ticker-sep">◆</span>
+      <span>Ісландія</span><span class="ticker-sep">◆</span><span>Марокко</span><span class="ticker-sep">◆</span><span>Патагонія</span><span class="ticker-sep">◆</span><span>Кіото</span><span class="ticker-sep">◆</span><span>Норвегія</span><span class="ticker-sep">◆</span><span>Грузія</span><span class="ticker-sep">◆</span><span>Оман</span><span class="ticker-sep">◆</span><span>Нова Зеландія</span><span class="ticker-sep">◆</span><span>Ефіопія</span><span class="ticker-sep">◆</span><span>Перу</span><span class="ticker-sep">◆</span><span>Португалія</span><span class="ticker-sep">◆</span><span>Монголія</span><span class="ticker-sep">◆</span><span>Ісландія</span><span class="ticker-sep">◆</span><span>Марокко</span><span class="ticker-sep">◆</span><span>Патагонія</span><span class="ticker-sep">◆</span><span>Кіото</span><span class="ticker-sep">◆</span><span>Норвегія</span><span class="ticker-sep">◆</span><span>Грузія</span><span class="ticker-sep">◆</span><span>Оман</span><span class="ticker-sep">◆</span><span>Нова Зеландія</span><span class="ticker-sep">◆</span><span>Ефіопія</span><span class="ticker-sep">◆</span><span>Перу</span><span class="ticker-sep">◆</span><span>Португалія</span><span class="ticker-sep">◆</span><span>Монголія</span><span class="ticker-sep">◆</span>
     </div>
   </div>
 
   <!-- FEATURED -->
   <section class="featured">
     <div class="featured-top rv">
-      <div><p class="slabel">Главное этой недели</p><h2 class="stitle">В центре<br>внимания</h2></div>
-      <button class="view-all" onclick="goPage('guides')">Все материалы →</button>
+      <div><p class="slabel">Головне цього тижня</p><h2 class="stitle">У центрі<br>уваги</h2></div>
+      <button class="view-all" onclick="goPage('guides')">Усі матеріали →</button>
     </div>
     <div class="featured-grid rv">
       <div class="feat-main">
@@ -589,35 +774,35 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
         <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80" alt="Марокко">
         <div class="feat-info">
           <p class="feat-region">Африка · Марокко</p>
-          <h3>Лабиринты Феса: потерянный во времени</h3>
-          <p>Медина Феса — крупнейший пешеходный город мира, где кожевенные мастерские не изменились с XII века.</p>
+          <h3>Лабіринти Фесу: загублений у часі</h3>
+          <p>Медина Фесу — найбільше пішохідне місто світу, де шкіряні майстерні не змінилися з XII століття.</p>
           <div class="feat-footer">
-            <span class="feat-meta">14 мин · Репортаж</span>
-            <button class="readlink" onclick="openArticle('fes')">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+            <span class="feat-meta">14 хв · Репортаж</span>
+            <button class="readlink" onclick="openArticle('fes')">Читати <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
           </div>
         </div>
       </div>
       <div class="feat-card">
         <span class="feat-badge" style="background:var(--sage)">Природа</span>
-        <img src="https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner/public/live_banner/Argentin-Patagonia.jpg" alt="Патагония">
+        <img src="https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner/public/live_banner/Argentin-Patagonia.jpg" alt="Патагонія">
         <div class="feat-info">
-          <p class="feat-region">Южная Америка · Чили</p>
-          <h3>Торрес-дель-Пайне: конец земли</h3>
+          <p class="feat-region">Південна Америка · Чилі</p>
+          <h3>Торрес-дель-Пайне: край землі</h3>
           <div class="feat-footer">
-            <span class="feat-meta">10 мин · Репортаж</span>
-            <button class="readlink" onclick="openArticle('patagonia')">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+            <span class="feat-meta">10 хв · Репортаж</span>
+            <button class="readlink" onclick="openArticle('patagonia')">Читати <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
           </div>
         </div>
       </div>
       <div class="feat-card">
         <span class="feat-badge" style="background:var(--slate)">Культура</span>
-        <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=800&q=80" alt="Киото">
+        <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=800&q=80" alt="Кіото">
         <div class="feat-info">
-          <p class="feat-region">Азия · Япония</p>
-          <h3>Киото в ноябре: алые клёны Арасияма</h3>
+          <p class="feat-region">Азія · Японія</p>
+          <h3>Кіото у листопаді: червоні клени Арасіями</h3>
           <div class="feat-footer">
-            <span class="feat-meta">8 мин · Гид</span>
-            <button class="readlink" onclick="openArticle('kyoto')">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+            <span class="feat-meta">8 хв · Гід</span>
+            <button class="readlink" onclick="openArticle('kyoto')">Читати <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
           </div>
         </div>
       </div>
@@ -627,33 +812,33 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
   <!-- DESTINATIONS PREVIEW -->
   <section class="destinations">
     <div class="dest-header rv">
-      <div><p class="slabel" style="color:rgba(245,240,232,.3)">Топ направления</p><h2 class="stitle" style="color:var(--cream)">2026 года</h2></div>
+      <div><p class="slabel" style="color:rgba(245,240,232,.3)">Топ напрямки</p><h2 class="stitle" style="color:var(--cream)">2026 року</h2></div>
       <div class="dest-counter">04</div>
     </div>
     <div class="dest-grid">
       <div class="dest-card rv" onclick="goPage('destinations')">
         <div class="dest-num">01</div>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUFkKvTLg1uVljxZv7zgRzKYC4Q3F-LmtM4Q&s" alt="Исландия">
-        <div class="dest-ov"><p class="dest-country">Европа</p><h3 class="dest-name">Исландия</h3><div class="dest-tags"><span class="dest-tag">Зима</span><span class="dest-tag">Северное сияние</span></div></div>
-        <div class="dest-hover-cta"><button class="dhc-btn">Подробнее</button></div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUFkKvTLg1uVljxZv7zgRzKYC4Q3F-LmtM4Q&s" alt="Ісландія">
+        <div class="dest-ov"><p class="dest-country">Європа</p><h3 class="dest-name">Ісландія</h3><div class="dest-tags"><span class="dest-tag">Зима</span><span class="dest-tag">Північне сяйво</span></div></div>
+        <div class="dest-hover-cta"><button class="dhc-btn">Детальніше</button></div>
       </div>
       <div class="dest-card rv d1" onclick="goPage('destinations')">
         <div class="dest-num">02</div>
         <img src="https://www.toursoyuz.by/wp-content/uploads/2024/08/12-2-960x695.jpg" alt="Оман">
-        <div class="dest-ov"><p class="dest-country">Ближний Восток</p><h3 class="dest-name">Оман</h3><div class="dest-tags"><span class="dest-tag">Осень</span><span class="dest-tag">Пустыня</span></div></div>
-        <div class="dest-hover-cta"><button class="dhc-btn">Подробнее</button></div>
+        <div class="dest-ov"><p class="dest-country">Близький Схід</p><h3 class="dest-name">Оман</h3><div class="dest-tags"><span class="dest-tag">Осінь</span><span class="dest-tag">Пустеля</span></div></div>
+        <div class="dest-hover-cta"><button class="dhc-btn">Детальніше</button></div>
       </div>
       <div class="dest-card rv d2" onclick="goPage('destinations')">
         <div class="dest-num">03</div>
-        <img src="https://images.unsplash.com/photo-1565073182887-6bcefbe225b1?w=700&q=80" alt="Грузия">
-        <div class="dest-ov"><p class="dest-country">Кавказ</p><h3 class="dest-name">Грузия</h3><div class="dest-tags"><span class="dest-tag">Круглый год</span><span class="dest-tag">Вино</span></div></div>
-        <div class="dest-hover-cta"><button class="dhc-btn">Подробнее</button></div>
+        <img src="https://images.unsplash.com/photo-1565073182887-6bcefbe225b1?w=700&q=80" alt="Грузія">
+        <div class="dest-ov"><p class="dest-country">Кавказ</p><h3 class="dest-name">Грузія</h3><div class="dest-tags"><span class="dest-tag">Цілий рік</span><span class="dest-tag">Вино</span></div></div>
+        <div class="dest-hover-cta"><button class="dhc-btn">Детальніше</button></div>
       </div>
       <div class="dest-card rv d3" onclick="goPage('destinations')">
         <div class="dest-num">04</div>
-        <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=700&q=80" alt="Норвегия">
-        <div class="dest-ov"><p class="dest-country">Скандинавия</p><h3 class="dest-name">Норвегия</h3><div class="dest-tags"><span class="dest-tag">Фьорды</span><span class="dest-tag">Лофотены</span></div></div>
-        <div class="dest-hover-cta"><button class="dhc-btn">Подробнее</button></div>
+        <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=700&q=80" alt="Норвегія">
+        <div class="dest-ov"><p class="dest-country">Скандинавія</p><h3 class="dest-name">Норвегія</h3><div class="dest-tags"><span class="dest-tag">Фіорди</span><span class="dest-tag">Лофотени</span></div></div>
+        <div class="dest-hover-cta"><button class="dhc-btn">Детальніше</button></div>
       </div>
     </div>
   </section>
@@ -663,8 +848,8 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
     <div class="q-img"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt=""></div>
     <div class="q-body">
       <div class="q-ornament">"</div>
-      <p class="q-text">Путешествовать — значит открывать, что все ошибаются насчёт других стран</p>
-      <p class="q-author">— Олдос Хаксли</p>
+      <p class="q-text">Подорожувати — це відкривати, що всі помиляються щодо інших країн</p>
+      <p class="q-author">— Олдос Хакслі</p>
     </div>
     <div class="q-img"><img src="https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=600&q=80" alt=""></div>
   </div>
@@ -672,35 +857,35 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
   <!-- GUIDE PREVIEW -->
   <section class="guide">
     <div class="guide-header">
-      <div class="rv"><p class="slabel">Практические руководства</p><h2 class="stitle">Гиды<br>путешественника</h2></div>
-      <p class="guide-desc rv">Наши редакторы проехали тысячи километров, чтобы собрать самые точные маршруты, проверенные отели и рестораны, которые не попадают в стандартные путеводители.</p>
+      <div class="rv"><p class="slabel">Практичні посібники</p><h2 class="stitle">Гіди<br>мандрівника</h2></div>
+      <p class="guide-desc rv">Наші редактори проїхали тисячі кілометрів, щоб зібрати найточніші маршрути, перевірені готелі та ресторани, які не потрапляють у стандартні путівники.</p>
     </div>
     <div class="guide-grid">
       <div class="guide-item rv" onclick="openArticle('italy')">
-        <div class="guide-img"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=700&q=80" alt="Италия"></div>
+        <div class="guide-img"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=700&q=80" alt="Італія"></div>
         <div class="guide-body">
-          <p class="guide-cat">Гастрономия</p>
-          <h4>Итальянский юг: от Неаполя до Сицилии</h4>
-          <p>10 дней вдоль Тирренского побережья — пицца, лимончелло Амальфи, рынок Балларо.</p>
-          <div class="guide-foot"><span>10 дней</span><span>Умеренный бюджет</span></div>
+          <p class="guide-cat">Гастрономія</p>
+          <h4>Італійський південь: від Неаполя до Сицилії</h4>
+          <p>10 днів вздовж Тірренського узбережжя — піца, лімончелло Амальфі, ринок Балларо.</p>
+          <div class="guide-foot"><span>10 днів</span><span>Помірний бюджет</span></div>
         </div>
       </div>
       <div class="guide-item rv d1" onclick="openArticle('peru')">
         <div class="guide-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw_yrO6D4l4rEKHYqhJVw_mS49i_MpK6ZBSQ&s" alt="Перу"></div>
         <div class="guide-body">
-          <p class="guide-cat">Треккинг</p>
-          <h4>Тропа Инков: 4 дня к Мачу-Пикчу</h4>
-          <p>Полная подготовка: пермиты, снаряжение, высотная болезнь и что взять с собой.</p>
-          <div class="guide-foot"><span>4 дня треккинга</span><span>Предварительная бронь</span></div>
+          <p class="guide-cat">Трекінг</p>
+          <h4>Стежка Інків: 4 дні до Мачу-Пікчу</h4>
+          <p>Повна підготовка: перміти, спорядження, гірська хвороба та що брати з собою.</p>
+          <div class="guide-foot"><span>4 дні трекінгу</span><span>Попереднє бронювання</span></div>
         </div>
       </div>
       <div class="guide-item rv d2" onclick="openArticle('maldives')">
-        <div class="guide-img"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=700&q=80" alt="Мальдивы"></div>
+        <div class="guide-img"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=700&q=80" alt="Мальдіви"></div>
         <div class="guide-body">
-          <p class="guide-cat">Отдых</p>
-          <h4>Мальдивы: острова без ажиотажа</h4>
-          <p>Гостевые дома на местных островах — в 4 раза дешевле и в 10 раз аутентичнее.</p>
-          <div class="guide-foot"><span>7–14 дней</span><span>Бюджетный вариант</span></div>
+          <p class="guide-cat">Відпочинок</p>
+          <h4>Мальдіви: острови без ажіотажу</h4>
+          <p>Гостьові будинки на місцевих островах — в 4 рази дешевше й в 10 разів автентичніше.</p>
+          <div class="guide-foot"><span>7–14 днів</span><span>Бюджетний варіант</span></div>
         </div>
       </div>
     </div>
@@ -711,44 +896,44 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
     <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1800&q=80" alt="карта">
     <div class="map-ctn">
       <p class="slabel">Наша карта</p>
-      <h2 class="stitle" style="color:var(--cream)">250+ маршрутов<br>по всему миру</h2>
-      <p>Интерактивная карта с фильтрами по типу путешествия, бюджету и сезону.</p>
-      <button class="btn-outline" onclick="goPage('destinations')">Смотреть направления</button>
+      <h2 class="stitle" style="color:var(--cream)">250+ маршрутів<br>по всьому світу</h2>
+      <p>Інтерактивна карта з фільтрами за типом подорожі, бюджетом і сезоном.</p>
+      <button class="btn-outline" onclick="goPage('destinations')">Дивитись напрямки</button>
     </div>
   </div>
 
   <!-- TIPS -->
   <section class="tips">
-    <div class="rv"><p class="slabel">Экспертные советы</p><h2 class="stitle">Знают<br>опытные</h2></div>
+    <div class="rv"><p class="slabel">Експертні поради</p><h2 class="stitle">Знають<br>досвідчені</h2></div>
     <div class="tips-grid">
       <div class="tip-hero rv" onclick="openArticle('sleep')">
-        <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=900&q=80" alt="самолёт">
+        <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=900&q=80" alt="літак">
         <div class="tip-hero-ov">
-          <p class="slabel" style="color:rgba(245,240,232,.5)">Лайфхак редакции</p>
-          <h3>Как спать в самолёте и прилетать отдохнувшим</h3>
-          <p>Выбор мест, аксессуары, мелатонин — детальный разбор от редактора, налетавшего 400 000 км.</p>
+          <p class="slabel" style="color:rgba(245,240,232,.5)">Лайфхак редакції</p>
+          <h3>Як спати в літаку та прилітати відпочившим</h3>
+          <p>Вибір місць, аксесуари, мелатонін — детальний розбір від редактора, який налітав 400 000 км.</p>
         </div>
       </div>
       <div class="tips-list rv">
         <div class="tip-row" onclick="openArticle('tickets')">
           <div class="tip-num">1</div>
           <div class="tip-img"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&q=80" alt=""></div>
-          <div class="tip-body"><p class="tip-cat">Финансы</p><h4>Дешевле авиабилеты: правило 45 дней</h4><p>За 45 дней до вылета — статистически самая низкая цена. Плюс Tuesday-trick.</p></div>
+          <div class="tip-body"><p class="tip-cat">Фінанси</p><h4>Дешевші авіаквитки: правило 45 днів</h4><p>За 45 днів до вильоту — статистично найнижча ціна. Плюс Tuesday-trick.</p></div>
         </div>
         <div class="tip-row" onclick="openArticle('packing')">
           <div class="tip-num">2</div>
           <div class="tip-img"><img src="https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?w=300&q=80" alt=""></div>
-          <div class="tip-body"><p class="tip-cat">Сборы</p><h4>Только ручная кладь: 7 кг, 14 дней</h4><p>Метод капсульного гардероба для любой климатической зоны мира.</p></div>
+          <div class="tip-body"><p class="tip-cat">Збори</p><h4>Тільки ручна поклажа: 7 кг, 14 днів</h4><p>Метод капсульного гардеробу для будь-якої кліматичної зони.</p></div>
         </div>
         <div class="tip-row" onclick="openArticle('insurance')">
           <div class="tip-num">3</div>
           <div class="tip-img"><img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=300&q=80" alt=""></div>
-          <div class="tip-body"><p class="tip-cat">Безопасность</p><h4>Страховка: что реально нужно</h4><p>5 сценариев, когда страховка спасала наших авторов.</p></div>
+          <div class="tip-body"><p class="tip-cat">Безпека</p><h4>Страховка: що реально потрібно</h4><p>5 сценаріїв, коли страховка рятувала наших авторів.</p></div>
         </div>
         <div class="tip-row" onclick="openArticle('asia_food')">
           <div class="tip-num">4</div>
           <div class="tip-img"><img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=300&q=80" alt=""></div>
-          <div class="tip-body"><p class="tip-cat">Гастрономия</p><h4>Вкусно и безопасно в Азии</h4><p>Уличная еда, рынки, правила гигиены от ветерана Юго-Восточной Азии.</p></div>
+          <div class="tip-body"><p class="tip-cat">Гастрономія</p><h4>Смачно та безпечно в Азії</h4><p>Вулична їжа, ринки, правила гігієни від ветерана Південно-Східної Азії.</p></div>
         </div>
       </div>
     </div>
@@ -756,12 +941,12 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
 
   <!-- SEASONS -->
   <section class="seasons">
-    <div class="seasons-head rv"><p class="slabel">Когда ехать</p><h2 class="stitle">Сезонный<br>календарь</h2></div>
+    <div class="seasons-head rv"><p class="slabel">Коли їхати</p><h2 class="stitle">Сезонний<br>календар</h2></div>
     <div class="seasons-grid">
-      <div class="season-card rv"><img src="https://images.unsplash.com/photo-1457269449834-928af64c684d?w=700&q=80" alt="зима"><div class="season-lbl"><p class="season-months">Дек — Фев</p><h3 class="season-name">Зима</h3><div class="season-places"><span>Лапландия — сафари на оленях</span><span>Мальдивы — лучший сезон</span><span>Исландия — северное сияние</span></div></div></div>
-      <div class="season-card rv d1"><img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=700&q=80" alt="весна"><div class="season-lbl"><p class="season-months">Мар — Май</p><h3 class="season-name">Весна</h3><div class="season-places"><span>Япония — сакура Киото</span><span>Нидерланды — тюльпаны</span><span>Иордания — Петра без толп</span></div></div></div>
-      <div class="season-card rv d2"><img src="https://cdn.fakty.com.ua/wp-content/uploads/2021/05/25/pogoda-lito-.jpg" alt="лето"><div class="season-lbl"><p class="season-months">Июн — Авг</p><h3 class="season-name">Лето</h3><div class="season-places"><span>Норвегия — белые ночи</span><span>Греция — Додеканес</span><span>Канада — Банфф, Джаспер</span></div></div></div>
-      <div class="season-card rv d3"><img src="https://vinbazar.com/sites/default/files/imagecache/690x/2013/10/364718.jpg" alt="осень"><div class="season-lbl"><p class="season-months">Сен — Ноя</p><h3 class="season-name">Осень</h3><div class="season-places"><span>Перу — до сезона дождей</span><span>Оман — идеальная погода</span><span>Шотландия — вересковые пустоши</span></div></div></div>
+      <div class="season-card rv"><img src="https://images.unsplash.com/photo-1457269449834-928af64c684d?w=700&q=80" alt="зима"><div class="season-lbl"><p class="season-months">Груд — Лют</p><h3 class="season-name">Зима</h3><div class="season-places"><span>Лапландія — сафарі на оленях</span><span>Мальдіви — найкращий сезон</span><span>Ісландія — північне сяйво</span></div></div></div>
+      <div class="season-card rv d1"><img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=700&q=80" alt="весна"><div class="season-lbl"><p class="season-months">Бер — Трав</p><h3 class="season-name">Весна</h3><div class="season-places"><span>Японія — сакура Кіото</span><span>Нідерланди — тюльпани</span><span>Йорданія — Петра без натовпів</span></div></div></div>
+      <div class="season-card rv d2"><img src="https://cdn.fakty.com.ua/wp-content/uploads/2021/05/25/pogoda-lito-.jpg" alt="літо"><div class="season-lbl"><p class="season-months">Черв — Серп</p><h3 class="season-name">Літо</h3><div class="season-places"><span>Норвегія — білі ночі</span><span>Греція — Додеканес</span><span>Канада — Банфф, Джаспер</span></div></div></div>
+      <div class="season-card rv d3"><img src="https://vinbazar.com/sites/default/files/imagecache/690x/2013/10/364718.jpg" alt="осінь"><div class="season-lbl"><p class="season-months">Вер — Лис</p><h3 class="season-name">Осінь</h3><div class="season-places"><span>Перу — до сезону дощів</span><span>Оман — ідеальна погода</span><span>Шотландія — вересові пустища</span></div></div></div>
     </div>
   </section>
 
@@ -769,273 +954,273 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
   <section class="newsletter">
     <div class="nl-img rv"><img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=800&q=80" alt=""></div>
     <div class="nl-form rv">
-      <p class="slabel">Оставайтесь в курсе</p>
-      <h2 class="stitle">Письмо раз<br>в неделю</h2>
-      <p class="nl-desc">Один маршрут, одна история, один совет — каждую пятницу. 18 000 читателей не ошибаются.</p>
+      <p class="slabel">Залишайтесь в курсі</p>
+      <h2 class="stitle">Лист раз<br>на тиждень</h2>
+      <p class="nl-desc">Один маршрут, одна історія, одна порада — кожної п'ятниці. 18 000 читачів не помиляються.</p>
       <div class="nl-row">
         <input type="email" id="nlEmail" placeholder="Ваш email">
-        <button class="nl-submit" onclick="nlSubmit()">Подписаться</button>
+        <button class="nl-submit" onclick="nlSubmit()">Підписатись</button>
       </div>
-      <p class="nl-note">Никакого спама. Отписаться можно в один клик.</p>
+      <p class="nl-note">Ніякого спаму. Відписатись можна в один клік.</p>
     </div>
   </section>
 
 </div><!-- /home -->
 
-<!-- ══════════════════════ DESTINATIONS PAGE ══════════════════════ -->
+<!-- ══════ DESTINATIONS PAGE ══════ -->
 <div class="page" id="page-destinations">
   <div class="page-hero">
     <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80')"></div>
     <div class="page-hero-ov"></div>
     <div class="page-hero-content">
-      <p class="slabel">Куда поехать</p>
-      <h1 class="stitle">Направления</h1>
+      <p class="slabel">Куди поїхати</p>
+      <h1 class="stitle">Напрямки</h1>
     </div>
   </div>
 
   <div class="dest-filters">
-    <button class="filter-btn active" onclick="filterDest(this,'all')">Все</button>
-    <button class="filter-btn" onclick="filterDest(this,'europe')">Европа</button>
-    <button class="filter-btn" onclick="filterDest(this,'asia')">Азия</button>
+    <button class="filter-btn active" onclick="filterDest(this,'all')">Усі</button>
+    <button class="filter-btn" onclick="filterDest(this,'europe')">Європа</button>
+    <button class="filter-btn" onclick="filterDest(this,'asia')">Азія</button>
     <button class="filter-btn" onclick="filterDest(this,'america')">Америка</button>
     <button class="filter-btn" onclick="filterDest(this,'africa')">Африка</button>
-    <button class="filter-btn" onclick="filterDest(this,'middle')">Ближний Восток</button>
+    <button class="filter-btn" onclick="filterDest(this,'middle')">Близький Схід</button>
   </div>
 
   <div class="dest-full-grid" id="destFullGrid">
-    <div class="dest-full-card rv" data-region="europe"><img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=800&q=80" alt="Исландия"><div class="dfc-ov"><p class="dfc-country">Европа · Исландия</p><h3 class="dfc-name">Рейкьявик и золотое кольцо</h3><p class="dfc-desc">Гейзеры, водопады и северное сияние в одном маршруте.</p><div class="dfc-tags"><span class="dfc-tag-item">Осень</span><span class="dfc-tag-item">Зима</span><span class="dfc-tag-item">9–14 дней</span></div></div><button class="dfc-btn" onclick="openArticle('iceland')">Открыть гид</button></div>
-    <div class="dest-full-card rv d1" data-region="middle"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Wahiba_Sands_%2812%29.jpg" alt="Оман"><div class="dfc-ov"><p class="dfc-country">Ближний Восток · Оман</p><h3 class="dfc-name">Маскат и дюны Вахиба</h3><p class="dfc-desc">Арабская экзотика без массового туризма.</p><div class="dfc-tags"><span class="dfc-tag-item">Октябрь-Апрель</span><span class="dfc-tag-item">7–10 дней</span></div></div><button class="dfc-btn" onclick="openArticle('oman')">Открыть гид</button></div>
-    <div class="dest-full-card rv d2" data-region="europe"><img src="https://images.unsplash.com/photo-1565073182887-6bcefbe225b1?w=800&q=80" alt="Грузия"><div class="dfc-ov"><p class="dfc-country">Кавказ · Грузия</p><h3 class="dfc-name">Тбилиси и военно-грузинская дорога</h3><p class="dfc-desc">Вино, хачапури и самые красивые горы мира.</p><div class="dfc-tags"><span class="dfc-tag-item">Круглый год</span><span class="dfc-tag-item">5–14 дней</span></div></div><button class="dfc-btn" onclick="openArticle('georgia')">Открыть гид</button></div>
-    <div class="dest-full-card rv" data-region="europe"><img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&q=80" alt="Норвегия"><div class="dfc-ov"><p class="dfc-country">Скандинавия · Норвегия</p><h3 class="dfc-name">Фьорды и острова Лофотены</h3><p class="dfc-desc">Белые ночи, рыбацкие деревни и сумасшедшие пейзажи.</p><div class="dfc-tags"><span class="dfc-tag-item">Лето</span><span class="dfc-tag-item">Зима</span></div></div><button class="dfc-btn" onclick="openArticle('norway')">Открыть гид</button></div>
-    <div class="dest-full-card rv d1" data-region="africa"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80" alt="Марокко"><div class="dfc-ov"><p class="dfc-country">Африка · Марокко</p><h3 class="dfc-name">Медины и Сахара</h3><p class="dfc-desc">От лабиринтов Феса до звёздного неба над дюнами.</p><div class="dfc-tags"><span class="dfc-tag-item">Осень</span><span class="dfc-tag-item">Весна</span></div></div><button class="dfc-btn" onclick="openArticle('fes')">Открыть гид</button></div>
-    <div class="dest-full-card rv d2" data-region="asia"><img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=800&q=80" alt="Япония"><div class="dfc-ov"><p class="dfc-country">Азия · Япония</p><h3 class="dfc-name">Киото — Tokyo — Нара</h3><p class="dfc-desc">Два города, два мира: медитативный и технологический.</p><div class="dfc-tags"><span class="dfc-tag-item">Весна</span><span class="dfc-tag-item">Осень</span></div></div><button class="dfc-btn" onclick="openArticle('kyoto')">Открыть гид</button></div>
-    <div class="dest-full-card rv" data-region="america"><img src="https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner/public/live_banner/Argentin-Patagonia.jpg" alt="Патагония"><div class="dfc-ov"><p class="dfc-country">Южная Америка · Чили</p><h3 class="dfc-name">Патагония: Торрес-дель-Пайне</h3><p class="dfc-desc">Конец земли, начало приключения.</p><div class="dfc-tags"><span class="dfc-tag-item">Ноябрь-Март</span><span class="dfc-tag-item">7–12 дней</span></div></div><button class="dfc-btn" onclick="openArticle('patagonia')">Открыть гид</button></div>
-    <div class="dest-full-card rv d1" data-region="asia"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80" alt="Мальдивы"><div class="dfc-ov"><p class="dfc-country">Индийский океан · Мальдивы</p><h3 class="dfc-name">Острова без туристического ажиотажа</h3><p class="dfc-desc">Гостевые дома на местных островах.</p><div class="dfc-tags"><span class="dfc-tag-item">Ноябрь-Апрель</span><span class="dfc-tag-item">Бюджетно</span></div></div><button class="dfc-btn" onclick="openArticle('maldives')">Открыть гид</button></div>
-    <div class="dest-full-card rv d2" data-region="america"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw_yrO6D4l4rEKHYqhJVw_mS49i_MpK6ZBSQ&s" alt="Перу"><div class="dfc-ov"><p class="dfc-country">Южная Америка · Перу</p><h3 class="dfc-name">Тропа инков к Мачу-Пикчу</h3><p class="dfc-desc">Самый культовый треккинг мира.</p><div class="dfc-tags"><span class="dfc-tag-item">Май-Октябрь</span><span class="dfc-tag-item">4 дня</span></div></div><button class="dfc-btn" onclick="openArticle('peru')">Открыть гид</button></div>
-    <div class="dest-full-card rv" data-region="europe"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80" alt="Италия"><div class="dfc-ov"><p class="dfc-country">Европа · Италия</p><h3 class="dfc-name">Неаполь → Амальфи → Сицилия</h3><p class="dfc-desc">Гастрономический маршрут по итальянскому югу.</p><div class="dfc-tags"><span class="dfc-tag-item">Весна</span><span class="dfc-tag-item">Осень</span><span class="dfc-tag-item">10 дней</span></div></div><button class="dfc-btn" onclick="openArticle('italy')">Открыть гид</button></div>
-    <div class="dest-full-card rv d1" data-region="europe"><img src="https://images.unsplash.com/photo-1513735539099-cf2b453cee26?w=800&q=80" alt="Португалия"><div class="dfc-ov"><p class="dfc-country">Европа · Португалия</p><h3 class="dfc-name">Лиссабон и Алгарве</h3><p class="dfc-desc">Самая недооценённая столица Европы.</p><div class="dfc-tags"><span class="dfc-tag-item">Круглый год</span><span class="dfc-tag-item">7–10 дней</span></div></div><button class="dfc-btn" onclick="openArticle('portugal')">Открыть гид</button></div>
-    <div class="dest-full-card rv d2" data-region="africa"><img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80" alt="Кения"><div class="dfc-ov"><p class="dfc-country">Африка · Кения</p><h3 class="dfc-name">Масаи Мара и побережье</h3><p class="dfc-desc">Большая пятёрка и бирюзовый океан.</p><div class="dfc-tags"><span class="dfc-tag-item">Июль-Октябрь</span><span class="dfc-tag-item">Сафари</span></div></div><button class="dfc-btn" onclick="openArticle('kenya')">Открыть гид</button></div>
+    <div class="dest-full-card rv" data-region="europe"><img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=800&q=80" alt="Ісландія"><div class="dfc-ov"><p class="dfc-country">Європа · Ісландія</p><h3 class="dfc-name">Рейк'явік і золоте кільце</h3><p class="dfc-desc">Гейзери, водоспади і північне сяйво в одному маршруті.</p><div class="dfc-tags"><span class="dfc-tag-item">Осінь</span><span class="dfc-tag-item">Зима</span><span class="dfc-tag-item">9–14 днів</span></div></div><button class="dfc-btn" onclick="openArticle('iceland')">Відкрити гід</button></div>
+    <div class="dest-full-card rv d1" data-region="middle"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Wahiba_Sands_%2812%29.jpg" alt="Оман"><div class="dfc-ov"><p class="dfc-country">Близький Схід · Оман</p><h3 class="dfc-name">Маскат і дюни Вахіба</h3><p class="dfc-desc">Арабська екзотика без масового туризму.</p><div class="dfc-tags"><span class="dfc-tag-item">Жовтень–Квітень</span><span class="dfc-tag-item">7–10 днів</span></div></div><button class="dfc-btn" onclick="openArticle('oman')">Відкрити гід</button></div>
+    <div class="dest-full-card rv d2" data-region="europe"><img src="https://images.unsplash.com/photo-1565073182887-6bcefbe225b1?w=800&q=80" alt="Грузія"><div class="dfc-ov"><p class="dfc-country">Кавказ · Грузія</p><h3 class="dfc-name">Тбілісі і Військово-Грузинська дорога</h3><p class="dfc-desc">Вино, хачапурі та найкрасивіші гори світу.</p><div class="dfc-tags"><span class="dfc-tag-item">Цілий рік</span><span class="dfc-tag-item">5–14 днів</span></div></div><button class="dfc-btn" onclick="openArticle('georgia')">Відкрити гід</button></div>
+    <div class="dest-full-card rv" data-region="europe"><img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&q=80" alt="Норвегія"><div class="dfc-ov"><p class="dfc-country">Скандинавія · Норвегія</p><h3 class="dfc-name">Фіорди та острови Лофотени</h3><p class="dfc-desc">Білі ночі, рибальські села та неймовірні пейзажі.</p><div class="dfc-tags"><span class="dfc-tag-item">Літо</span><span class="dfc-tag-item">Зима</span></div></div><button class="dfc-btn" onclick="openArticle('norway')">Відкрити гід</button></div>
+    <div class="dest-full-card rv d1" data-region="africa"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80" alt="Марокко"><div class="dfc-ov"><p class="dfc-country">Африка · Марокко</p><h3 class="dfc-name">Медини і Сахара</h3><p class="dfc-desc">Від лабіринтів Фесу до зоряного неба над дюнами.</p><div class="dfc-tags"><span class="dfc-tag-item">Осінь</span><span class="dfc-tag-item">Весна</span></div></div><button class="dfc-btn" onclick="openArticle('fes')">Відкрити гід</button></div>
+    <div class="dest-full-card rv d2" data-region="asia"><img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=800&q=80" alt="Японія"><div class="dfc-ov"><p class="dfc-country">Азія · Японія</p><h3 class="dfc-name">Кіото — Токіо — Нара</h3><p class="dfc-desc">Два міста, два світи: медитативний і технологічний.</p><div class="dfc-tags"><span class="dfc-tag-item">Весна</span><span class="dfc-tag-item">Осінь</span></div></div><button class="dfc-btn" onclick="openArticle('kyoto')">Відкрити гід</button></div>
+    <div class="dest-full-card rv" data-region="america"><img src="https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner/public/live_banner/Argentin-Patagonia.jpg" alt="Патагонія"><div class="dfc-ov"><p class="dfc-country">Південна Америка · Чилі</p><h3 class="dfc-name">Патагонія: Торрес-дель-Пайне</h3><p class="dfc-desc">Край землі, початок пригоди.</p><div class="dfc-tags"><span class="dfc-tag-item">Листопад–Березень</span><span class="dfc-tag-item">7–12 днів</span></div></div><button class="dfc-btn" onclick="openArticle('patagonia')">Відкрити гід</button></div>
+    <div class="dest-full-card rv d1" data-region="asia"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80" alt="Мальдіви"><div class="dfc-ov"><p class="dfc-country">Індійський океан · Мальдіви</p><h3 class="dfc-name">Острови без туристичного ажіотажу</h3><p class="dfc-desc">Гостьові будинки на місцевих островах.</p><div class="dfc-tags"><span class="dfc-tag-item">Листопад–Квітень</span><span class="dfc-tag-item">Бюджетно</span></div></div><button class="dfc-btn" onclick="openArticle('maldives')">Відкрити гід</button></div>
+    <div class="dest-full-card rv d2" data-region="america"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw_yrO6D4l4rEKHYqhJVw_mS49i_MpK6ZBSQ&s" alt="Перу"><div class="dfc-ov"><p class="dfc-country">Південна Америка · Перу</p><h3 class="dfc-name">Стежка Інків до Мачу-Пікчу</h3><p class="dfc-desc">Найкультовіший трекінг у світі.</p><div class="dfc-tags"><span class="dfc-tag-item">Травень–Жовтень</span><span class="dfc-tag-item">4 дні</span></div></div><button class="dfc-btn" onclick="openArticle('peru')">Відкрити гід</button></div>
+    <div class="dest-full-card rv" data-region="europe"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80" alt="Італія"><div class="dfc-ov"><p class="dfc-country">Європа · Італія</p><h3 class="dfc-name">Неаполь → Амальфі → Сицилія</h3><p class="dfc-desc">Гастрономічний маршрут по італійському півдню.</p><div class="dfc-tags"><span class="dfc-tag-item">Весна</span><span class="dfc-tag-item">Осінь</span><span class="dfc-tag-item">10 днів</span></div></div><button class="dfc-btn" onclick="openArticle('italy')">Відкрити гід</button></div>
+    <div class="dest-full-card rv d1" data-region="europe"><img src="https://images.unsplash.com/photo-1513735539099-cf2b453cee26?w=800&q=80" alt="Португалія"><div class="dfc-ov"><p class="dfc-country">Європа · Португалія</p><h3 class="dfc-name">Лісабон і Алгарве</h3><p class="dfc-desc">Найнедооцінена столиця Європи.</p><div class="dfc-tags"><span class="dfc-tag-item">Цілий рік</span><span class="dfc-tag-item">7–10 днів</span></div></div><button class="dfc-btn" onclick="openArticle('portugal')">Відкрити гід</button></div>
+    <div class="dest-full-card rv d2" data-region="africa"><img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80" alt="Кенія"><div class="dfc-ov"><p class="dfc-country">Африка · Кенія</p><h3 class="dfc-name">Масаї Мара і узбережжя</h3><p class="dfc-desc">Велика п'ятірка і бірюзовий океан.</p><div class="dfc-tags"><span class="dfc-tag-item">Липень–Жовтень</span><span class="dfc-tag-item">Сафарі</span></div></div><button class="dfc-btn" onclick="openArticle('kenya')">Відкрити гід</button></div>
   </div>
-</div><!-- /destinations -->
+</div>
 
-<!-- ══════════════════════ GUIDES PAGE ══════════════════════ -->
+<!-- ══════ GUIDES PAGE ══════ -->
 <div class="page" id="page-guides">
   <div class="page-hero">
     <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=1800&q=80')"></div>
     <div class="page-hero-ov"></div>
-    <div class="page-hero-content"><p class="slabel">Вся редакция</p><h1 class="stitle">Гиды<br>и статьи</h1></div>
+    <div class="page-hero-content"><p class="slabel">Вся редакція</p><h1 class="stitle">Гіди<br>та статті</h1></div>
   </div>
   <div class="guides-page">
     <div class="guides-featured rv">
       <div class="gf-card" onclick="openArticle('fes')">
         <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80" alt="Марокко">
-        <div class="gf-ov"><p class="gf-tag">Cover Story · 14 мин</p><h3>Лабиринты Феса: потерянный во времени</h3><p>Медина Феса — крупнейший пешеходный город мира, где кожевенные мастерские не изменились с XII века.</p><div class="gf-meta"><span>Марокко</span><span>·</span><span>Репортаж</span></div></div>
+        <div class="gf-ov"><p class="gf-tag">Cover Story · 14 хв</p><h3>Лабіринти Фесу: загублений у часі</h3><p>Медина Фесу — найбільше пішохідне місто світу, де шкіряні майстерні не змінилися з XII століття.</p><div class="gf-meta"><span>Марокко</span><span>·</span><span>Репортаж</span></div></div>
       </div>
       <div class="gf-card" onclick="openArticle('patagonia')">
-        <img src="https://zovgor.com/assets/images/tale198-23-min.jpg" alt="Патагония">
-        <div class="gf-ov"><p class="gf-tag">Природа · 10 мин</p><h3>Патагония: конец земли</h3><p>Где небо встречается с землёй и больше ничего нет.</p><div class="gf-meta"><span>Чили</span><span>·</span><span>Репортаж</span></div></div>
+        <img src="https://zovgor.com/assets/images/tale198-23-min.jpg" alt="Патагонія">
+        <div class="gf-ov"><p class="gf-tag">Природа · 10 хв</p><h3>Патагонія: край землі</h3><p>Де небо зустрічається із землею і більше нічого немає.</p><div class="gf-meta"><span>Чилі</span><span>·</span><span>Репортаж</span></div></div>
       </div>
     </div>
     <div class="guides-list">
-      <div class="gl-item rv" onclick="openArticle('kyoto')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Культура · 8 мин</p><h4>Киото в ноябре: алые клёны</h4><p>Лучшее время для посещения древней японской столицы.</p><div class="gl-foot"><span>Япония</span><span>Гид</span></div></div></div>
-      <div class="gl-item rv d1" onclick="openArticle('italy')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Гастрономия · 12 мин</p><h4>Итальянский юг: от Неаполя до Сицилии</h4><p>Пицца, море и архитектура в одном маршруте.</p><div class="gl-foot"><span>Италия</span><span>Маршрут</span></div></div></div>
-      <div class="gl-item rv d2" onclick="openArticle('sleep')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Практика · 6 мин</p><h4>Как спать в самолёте</h4><p>Инструкция от редактора, налетавшего 400 000 км.</p><div class="gl-foot"><span>Советы</span><span>Статья</span></div></div></div>
-      <div class="gl-item rv" onclick="openArticle('peru')"><div class="gl-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw_yrO6D4l4rEKHYqhJVw_mS49i_MpK6ZBSQ&s" alt=""></div><div class="gl-body"><p class="gl-cat">Треккинг · 14 мин</p><h4>Тропа инков: 4 дня к Мачу-Пикчу</h4><p>Полная подготовка к самому культовому треккингу мира.</p><div class="gl-foot"><span>Перу</span><span>Гид</span></div></div></div>
-      <div class="gl-item rv d1" onclick="openArticle('maldives')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Отдых · 7 мин</p><h4>Мальдивы: острова без ажиотажа</h4><p>Гостевые дома в 4 раза дешевле курортов.</p><div class="gl-foot"><span>Мальдивы</span><span>Практика</span></div></div></div>
-      <div class="gl-item rv d2" onclick="openArticle('packing')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Практика · 5 мин</p><h4>Только ручная кладь: 7 кг, 14 дней</h4><p>Метод капсульного гардероба для любой зоны.</p><div class="gl-foot"><span>Советы</span><span>Чеклист</span></div></div></div>
+      <div class="gl-item rv" onclick="openArticle('kyoto')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Культура · 8 хв</p><h4>Кіото у листопаді: червоні клени</h4><p>Найкращий час для відвідування давньої японської столиці.</p><div class="gl-foot"><span>Японія</span><span>Гід</span></div></div></div>
+      <div class="gl-item rv d1" onclick="openArticle('italy')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Гастрономія · 12 хв</p><h4>Італійський південь: від Неаполя до Сицилії</h4><p>Піца, море та архітектура в одному маршруті.</p><div class="gl-foot"><span>Італія</span><span>Маршрут</span></div></div></div>
+      <div class="gl-item rv d2" onclick="openArticle('sleep')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Практика · 6 хв</p><h4>Як спати в літаку</h4><p>Інструкція від редактора, який налітав 400 000 км.</p><div class="gl-foot"><span>Поради</span><span>Стаття</span></div></div></div>
+      <div class="gl-item rv" onclick="openArticle('peru')"><div class="gl-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw_yrO6D4l4rEKHYqhJVw_mS49i_MpK6ZBSQ&s" alt=""></div><div class="gl-body"><p class="gl-cat">Трекінг · 14 хв</p><h4>Стежка інків: 4 дні до Мачу-Пікчу</h4><p>Повна підготовка до найкультовішого трекінгу у світі.</p><div class="gl-foot"><span>Перу</span><span>Гід</span></div></div></div>
+      <div class="gl-item rv d1" onclick="openArticle('maldives')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Відпочинок · 7 хв</p><h4>Мальдіви: острови без ажіотажу</h4><p>Гостьові будинки в 4 рази дешевше курортів.</p><div class="gl-foot"><span>Мальдіви</span><span>Практика</span></div></div></div>
+      <div class="gl-item rv d2" onclick="openArticle('packing')"><div class="gl-img"><img src="https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?w=600&q=80" alt=""></div><div class="gl-body"><p class="gl-cat">Практика · 5 хв</p><h4>Тільки ручна поклажа: 7 кг, 14 днів</h4><p>Метод капсульного гардеробу для будь-якої зони.</p><div class="gl-foot"><span>Поради</span><span>Чекліст</span></div></div></div>
     </div>
   </div>
-</div><!-- /guides -->
+</div>
 
-<!-- ══════════════════════ QUIZ PAGE ══════════════════════ -->
+<!-- ══════ QUIZ PAGE ══════ -->
 <div class="page" id="page-quiz">
   <div class="page-hero">
     <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1800&q=80')"></div>
     <div class="page-hero-ov"></div>
-    <div class="page-hero-content"><p class="slabel">Персонализация</p><h1 class="stitle">Куда мне<br>ехать?</h1></div>
+    <div class="page-hero-content"><p class="slabel">Персоналізація</p><h1 class="stitle">Куди мені<br>їхати?</h1></div>
   </div>
   <div class="quiz-page">
     <div class="quiz-wrap">
       <div class="quiz-result" id="quizResult"></div>
       <div id="quizBody">
-        <h2 class="stitle" style="text-align:center;margin-bottom:10px">Найди своё<br>направление</h2>
-        <p class="quiz-sub">5 вопросов — один идеальный маршрут</p>
+        <h2 class="stitle" style="text-align:center;margin-bottom:10px">Знайди свій<br>напрямок</h2>
+        <p class="quiz-sub">5 питань — один ідеальний маршрут</p>
         <div class="quiz-prog" id="quizProg">
           <div class="quiz-dot cur"></div><div class="quiz-dot"></div><div class="quiz-dot"></div><div class="quiz-dot"></div><div class="quiz-dot"></div>
         </div>
         <div class="quiz-step active" id="qStep0">
-          <p class="quiz-q">Какой тип путешествия тебе сейчас нужен?</p>
+          <p class="quiz-q">Який тип подорожі тобі зараз потрібен?</p>
           <div class="quiz-options">
-            <div class="quiz-opt" onclick="selectOpt(this,'active')"><div class="quiz-opt-icon">🏃</div><div class="quiz-opt-text"><div class="quiz-opt-title">Активный отдых</div><div class="quiz-opt-sub">Треккинг, спорт, приключения</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'relax')"><div class="quiz-opt-icon">🌊</div><div class="quiz-opt-text"><div class="quiz-opt-title">Расслабление</div><div class="quiz-opt-sub">Пляж, спа, ничегонеделание</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'culture')"><div class="quiz-opt-icon">🏛</div><div class="quiz-opt-text"><div class="quiz-opt-title">Культура и история</div><div class="quiz-opt-sub">Музеи, архитектура, традиции</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'gastro')"><div class="quiz-opt-icon">🍷</div><div class="quiz-opt-text"><div class="quiz-opt-title">Гастрономия</div><div class="quiz-opt-sub">Еда, вино, рынки</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'active')"><div class="quiz-opt-icon">🏃</div><div class="quiz-opt-text"><div class="quiz-opt-title">Активний відпочинок</div><div class="quiz-opt-sub">Трекінг, спорт, пригоди</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'relax')"><div class="quiz-opt-icon">🌊</div><div class="quiz-opt-text"><div class="quiz-opt-title">Розслаблення</div><div class="quiz-opt-sub">Пляж, спа, нічогонеробіння</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'culture')"><div class="quiz-opt-icon">🏛</div><div class="quiz-opt-text"><div class="quiz-opt-title">Культура та історія</div><div class="quiz-opt-sub">Музеї, архітектура, традиції</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'gastro')"><div class="quiz-opt-icon">🍷</div><div class="quiz-opt-text"><div class="quiz-opt-title">Гастрономія</div><div class="quiz-opt-sub">Їжа, вино, ринки</div></div></div>
           </div>
         </div>
         <div class="quiz-step" id="qStep1">
-          <p class="quiz-q">Какой климат предпочитаешь?</p>
+          <p class="quiz-q">Який клімат тобі подобається?</p>
           <div class="quiz-options">
-            <div class="quiz-opt" onclick="selectOpt(this,'cold')"><div class="quiz-opt-icon">❄️</div><div class="quiz-opt-text"><div class="quiz-opt-title">Холод и снег</div><div class="quiz-opt-sub">До -10°, зимние пейзажи</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'warm')"><div class="quiz-opt-icon">☀️</div><div class="quiz-opt-text"><div class="quiz-opt-title">Тепло и солнце</div><div class="quiz-opt-sub">25–35°, пальмы</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'mild')"><div class="quiz-opt-icon">🌤</div><div class="quiz-opt-text"><div class="quiz-opt-title">Мягкий климат</div><div class="quiz-opt-sub">15–25°, без крайностей</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'any')"><div class="quiz-opt-icon">🌍</div><div class="quiz-opt-text"><div class="quiz-opt-title">Всё равно</div><div class="quiz-opt-sub">Главное — впечатления</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'cold')"><div class="quiz-opt-icon">❄️</div><div class="quiz-opt-text"><div class="quiz-opt-title">Холод і сніг</div><div class="quiz-opt-sub">До -10°, зимові пейзажі</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'warm')"><div class="quiz-opt-icon">☀️</div><div class="quiz-opt-text"><div class="quiz-opt-title">Тепло і сонце</div><div class="quiz-opt-sub">25–35°, пальми</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'mild')"><div class="quiz-opt-icon">🌤</div><div class="quiz-opt-text"><div class="quiz-opt-title">М'який клімат</div><div class="quiz-opt-sub">15–25°, без крайнощів</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'any')"><div class="quiz-opt-icon">🌍</div><div class="quiz-opt-text"><div class="quiz-opt-title">Все одно</div><div class="quiz-opt-sub">Головне — враження</div></div></div>
           </div>
         </div>
         <div class="quiz-step" id="qStep2">
-          <p class="quiz-q">Каков твой бюджет на поездку?</p>
+          <p class="quiz-q">Який твій бюджет на поїздку?</p>
           <div class="quiz-options">
-            <div class="quiz-opt" onclick="selectOpt(this,'budget')"><div class="quiz-opt-icon">🎒</div><div class="quiz-opt-text"><div class="quiz-opt-title">Бюджетный</div><div class="quiz-opt-sub">До 1 000 $ на человека</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'mid')"><div class="quiz-opt-icon">✈️</div><div class="quiz-opt-text"><div class="quiz-opt-title">Средний</div><div class="quiz-opt-sub">1 000–3 000 $</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'premium')"><div class="quiz-opt-icon">🥂</div><div class="quiz-opt-text"><div class="quiz-opt-title">Премиум</div><div class="quiz-opt-sub">3 000–8 000 $</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'luxury')"><div class="quiz-opt-icon">💎</div><div class="quiz-opt-text"><div class="quiz-opt-title">Без ограничений</div><div class="quiz-opt-sub">Хочу лучшее</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'budget')"><div class="quiz-opt-icon">🎒</div><div class="quiz-opt-text"><div class="quiz-opt-title">Бюджетний</div><div class="quiz-opt-sub">До 1 000 $ на людину</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'mid')"><div class="quiz-opt-icon">✈️</div><div class="quiz-opt-text"><div class="quiz-opt-title">Середній</div><div class="quiz-opt-sub">1 000–3 000 $</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'premium')"><div class="quiz-opt-icon">🥂</div><div class="quiz-opt-text"><div class="quiz-opt-title">Преміум</div><div class="quiz-opt-sub">3 000–8 000 $</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'luxury')"><div class="quiz-opt-icon">💎</div><div class="quiz-opt-text"><div class="quiz-opt-title">Без обмежень</div><div class="quiz-opt-sub">Хочу найкраще</div></div></div>
           </div>
         </div>
         <div class="quiz-step" id="qStep3">
-          <p class="quiz-q">Сколько времени у тебя есть?</p>
+          <p class="quiz-q">Скільки часу у тебе є?</p>
           <div class="quiz-options">
-            <div class="quiz-opt" onclick="selectOpt(this,'short')"><div class="quiz-opt-icon">⚡</div><div class="quiz-opt-text"><div class="quiz-opt-title">Уикенд</div><div class="quiz-opt-sub">2–4 дня</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'week')"><div class="quiz-opt-icon">📅</div><div class="quiz-opt-text"><div class="quiz-opt-title">Неделя</div><div class="quiz-opt-sub">5–8 дней</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'two')"><div class="quiz-opt-icon">🗓</div><div class="quiz-opt-text"><div class="quiz-opt-title">Две недели</div><div class="quiz-opt-sub">10–14 дней</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'long')"><div class="quiz-opt-icon">🌐</div><div class="quiz-opt-text"><div class="quiz-opt-title">Месяц и больше</div><div class="quiz-opt-sub">Долгое путешествие</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'short')"><div class="quiz-opt-icon">⚡</div><div class="quiz-opt-text"><div class="quiz-opt-title">Вікенд</div><div class="quiz-opt-sub">2–4 дні</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'week')"><div class="quiz-opt-icon">📅</div><div class="quiz-opt-text"><div class="quiz-opt-title">Тиждень</div><div class="quiz-opt-sub">5–8 днів</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'two')"><div class="quiz-opt-icon">🗓</div><div class="quiz-opt-text"><div class="quiz-opt-title">Два тижні</div><div class="quiz-opt-sub">10–14 днів</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'long')"><div class="quiz-opt-icon">🌐</div><div class="quiz-opt-text"><div class="quiz-opt-title">Місяць і більше</div><div class="quiz-opt-sub">Довга подорож</div></div></div>
           </div>
         </div>
         <div class="quiz-step" id="qStep4">
-          <p class="quiz-q">Что для тебя важнее всего?</p>
+          <p class="quiz-q">Що для тебе найважливіше?</p>
           <div class="quiz-options">
-            <div class="quiz-opt" onclick="selectOpt(this,'nature')"><div class="quiz-opt-icon">🏔</div><div class="quiz-opt-text"><div class="quiz-opt-title">Природа</div><div class="quiz-opt-sub">Горы, моря, леса</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'people')"><div class="quiz-opt-icon">🤝</div><div class="quiz-opt-text"><div class="quiz-opt-title">Люди и общение</div><div class="quiz-opt-sub">Местная жизнь, аутентичность</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'photo')"><div class="quiz-opt-icon">📸</div><div class="quiz-opt-text"><div class="quiz-opt-title">Фотографии</div><div class="quiz-opt-sub">Незабываемые кадры</div></div></div>
-            <div class="quiz-opt" onclick="selectOpt(this,'story')"><div class="quiz-opt-icon">📖</div><div class="quiz-opt-text"><div class="quiz-opt-title">История</div><div class="quiz-opt-sub">Понять другую цивилизацию</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'nature')"><div class="quiz-opt-icon">🏔</div><div class="quiz-opt-text"><div class="quiz-opt-title">Природа</div><div class="quiz-opt-sub">Гори, моря, ліси</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'people')"><div class="quiz-opt-icon">🤝</div><div class="quiz-opt-text"><div class="quiz-opt-title">Люди та спілкування</div><div class="quiz-opt-sub">Місцеве життя, автентичність</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'photo')"><div class="quiz-opt-icon">📸</div><div class="quiz-opt-text"><div class="quiz-opt-title">Фотографії</div><div class="quiz-opt-sub">Незабутні кадри</div></div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,'story')"><div class="quiz-opt-icon">📖</div><div class="quiz-opt-text"><div class="quiz-opt-title">Історія</div><div class="quiz-opt-sub">Зрозуміти іншу цивілізацію</div></div></div>
           </div>
         </div>
         <div class="quiz-nav">
           <button class="quiz-prev" id="qPrev" onclick="qNav(-1)" style="opacity:0;pointer-events:none">Назад</button>
-          <button class="quiz-next" id="qNext" onclick="qNav(1)">Следующий</button>
+          <button class="quiz-next" id="qNext" onclick="qNav(1)">Наступний</button>
         </div>
       </div>
     </div>
   </div>
-</div><!-- /quiz -->
+</div>
 
-<!-- ══════════════════════ CALCULATOR PAGE ══════════════════════ -->
+<!-- ══════ CALCULATOR PAGE ══════ -->
 <div class="page" id="page-calculator">
   <div class="page-hero">
     <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1800&q=80')"></div>
     <div class="page-hero-ov"></div>
-    <div class="page-hero-content"><p class="slabel">Финансы</p><h1 class="stitle">Бюджетный<br>калькулятор</h1></div>
+    <div class="page-hero-content"><p class="slabel">Фінанси</p><h1 class="stitle">Бюджетний<br>калькулятор</h1></div>
   </div>
   <div class="calc-page">
     <div class="calc-form rv">
-      <p class="slabel">Параметры поездки</p>
-      <h2 class="stitle">Посчитай бюджет</h2>
-      <p class="calc-sub">Введи детали поездки — получи реалистичный бюджет</p>
+      <p class="slabel">Параметри поїздки</p>
+      <h2 class="stitle">Порахуй бюджет</h2>
+      <p class="calc-sub">Введи деталі поїздки — отримай реалістичний бюджет</p>
       <div class="calc-group">
-        <label>Направление</label>
+        <label>Напрямок</label>
         <select class="calc-select" id="cDest" onchange="calcUpdate()">
-          <option value="europe">Европа</option>
-          <option value="asia">Азия (Таиланд, Индонезия)</option>
-          <option value="japan">Япония, Южная Корея</option>
+          <option value="europe">Європа</option>
+          <option value="asia">Азія (Таїланд, Індонезія)</option>
+          <option value="japan">Японія, Південна Корея</option>
           <option value="usa">США, Канада</option>
-          <option value="la">Латинская Америка</option>
+          <option value="la">Латинська Америка</option>
           <option value="africa">Африка</option>
-          <option value="maldives">Мальдивы, Бали</option>
+          <option value="maldives">Мальдіви, Балі</option>
         </select>
       </div>
       <div class="calc-row">
         <div class="calc-group">
-          <label>Количество дней</label>
+          <label>Кількість днів</label>
           <div class="range-wrap">
-            <div class="range-val" id="cDaysVal">7 <span>дней</span></div>
-            <input type="range" min="2" max="30" value="7" id="cDays" oninput="document.getElementById('cDaysVal').innerHTML=this.value+' <span>дней</span>';calcUpdate()">
+            <div class="range-val" id="cDaysVal">7 <span>днів</span></div>
+            <input type="range" min="2" max="30" value="7" id="cDays" oninput="document.getElementById('cDaysVal').innerHTML=this.value+' <span>днів</span>';calcUpdate()">
           </div>
         </div>
         <div class="calc-group">
-          <label>Количество человек</label>
+          <label>Кількість людей</label>
           <div class="range-wrap">
-            <div class="range-val" id="cPaxVal">2 <span>чел.</span></div>
-            <input type="range" min="1" max="6" value="2" id="cPax" oninput="document.getElementById('cPaxVal').innerHTML=this.value+' <span>чел.</span>';calcUpdate()">
+            <div class="range-val" id="cPaxVal">2 <span>ос.</span></div>
+            <input type="range" min="1" max="6" value="2" id="cPax" oninput="document.getElementById('cPaxVal').innerHTML=this.value+' <span>ос.</span>';calcUpdate()">
           </div>
         </div>
       </div>
       <div class="calc-group">
-        <label>Стиль проживания</label>
+        <label>Стиль проживання</label>
         <select class="calc-select" id="cHotel" onchange="calcUpdate()">
           <option value="hostel">Хостел / гестхаус</option>
-          <option value="budget" selected>Бюджетный отель 3★</option>
-          <option value="mid">Отель 4★</option>
-          <option value="luxury">Отель 5★ / Resort</option>
+          <option value="budget" selected>Бюджетний готель 3★</option>
+          <option value="mid">Готель 4★</option>
+          <option value="luxury">Готель 5★ / Resort</option>
         </select>
       </div>
       <div class="calc-group">
-        <label>Дополнительные опции</label>
+        <label>Додаткові опції</label>
         <div class="calc-toggles">
-          <div class="calc-toggle on" id="ctFlight" onclick="toggleCalc(this,'ctFlight')"><div><div class="ct-label">Авиабилеты</div><div class="ct-extra">Туда и обратно</div></div><div class="ct-check"></div></div>
-          <div class="calc-toggle on" id="ctFood" onclick="toggleCalc(this,'ctFood')"><div><div class="ct-label">Питание</div><div class="ct-extra">3 приёма пищи в день</div></div><div class="ct-check"></div></div>
-          <div class="calc-toggle" id="ctTours" onclick="toggleCalc(this,'ctTours')"><div><div class="ct-label">Экскурсии и туры</div><div class="ct-extra">~2 тура в неделю</div></div><div class="ct-check"></div></div>
-          <div class="calc-toggle" id="ctInsurance" onclick="toggleCalc(this,'ctInsurance')"><div><div class="ct-label">Страховка</div><div class="ct-extra">Полный пакет путешественника</div></div><div class="ct-check"></div></div>
-          <div class="calc-toggle on" id="ctTransport" onclick="toggleCalc(this,'ctTransport')"><div><div class="ct-label">Транспорт на месте</div><div class="ct-extra">Такси, метро, автобусы</div></div><div class="ct-check"></div></div>
+          <div class="calc-toggle on" id="ctFlight" onclick="toggleCalc(this,'ctFlight')"><div><div class="ct-label">Авіаквитки</div><div class="ct-extra">Туди і назад</div></div><div class="ct-check"></div></div>
+          <div class="calc-toggle on" id="ctFood" onclick="toggleCalc(this,'ctFood')"><div><div class="ct-label">Харчування</div><div class="ct-extra">3 прийоми їжі на день</div></div><div class="ct-check"></div></div>
+          <div class="calc-toggle" id="ctTours" onclick="toggleCalc(this,'ctTours')"><div><div class="ct-label">Екскурсії та тури</div><div class="ct-extra">~2 тури на тиждень</div></div><div class="ct-check"></div></div>
+          <div class="calc-toggle" id="ctInsurance" onclick="toggleCalc(this,'ctInsurance')"><div><div class="ct-label">Страховка</div><div class="ct-extra">Повний пакет мандрівника</div></div><div class="ct-check"></div></div>
+          <div class="calc-toggle on" id="ctTransport" onclick="toggleCalc(this,'ctTransport')"><div><div class="ct-label">Транспорт на місці</div><div class="ct-extra">Таксі, метро, автобуси</div></div><div class="ct-check"></div></div>
         </div>
       </div>
-      <button class="calc-btn" onclick="calcUpdate()">Пересчитать</button>
+      <button class="calc-btn" onclick="calcUpdate()">Перерахувати</button>
     </div>
     <div class="calc-result rv d1">
       <div class="calc-result-panel" id="calcPanel">
-        <div class="crp-label">Ваш примерный бюджет</div>
+        <div class="crp-label">Ваш приблизний бюджет</div>
         <div class="crp-total">
-          <div class="crp-total-label">Итого на поездку</div>
+          <div class="crp-total-label">Разом на поїздку</div>
           <div class="crp-total-num" id="crpTotal">0</div>
-          <div class="crp-total-cur">USD · на всех</div>
+          <div class="crp-total-cur">USD · на всіх</div>
         </div>
         <div class="crp-bars" id="crpBars"></div>
         <div class="crp-tips" id="crpTips"></div>
       </div>
     </div>
   </div>
-</div><!-- /calculator -->
+</div>
 
-<!-- ══════════════════════ GALLERY PAGE ══════════════════════ -->
+<!-- ══════ GALLERY PAGE ══════ -->
 <div class="page" id="page-gallery">
   <div class="page-hero">
     <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1800&q=80')"></div>
     <div class="page-hero-ov"></div>
-    <div class="page-hero-content"><p class="slabel">Вдохновение</p><h1 class="stitle">Галерея</h1></div>
+    <div class="page-hero-content"><p class="slabel">Натхнення</p><h1 class="stitle">Галерея</h1></div>
   </div>
   <div class="gallery-page">
     <div class="dest-filters" style="padding:0;margin-bottom:28px">
-      <button class="filter-btn active" onclick="filterGal(this,'all')">Все фото</button>
+      <button class="filter-btn active" onclick="filterGal(this,'all')">Усі фото</button>
       <button class="filter-btn" onclick="filterGal(this,'nature')">Природа</button>
-      <button class="filter-btn" onclick="filterGal(this,'city')">Города</button>
-      <button class="filter-btn" onclick="filterGal(this,'food')">Еда</button>
+      <button class="filter-btn" onclick="filterGal(this,'city')">Міста</button>
+      <button class="filter-btn" onclick="filterGal(this,'food')">Їжа</button>
       <button class="filter-btn" onclick="filterGal(this,'people')">Люди</button>
     </div>
     <div class="gallery-grid" id="galGrid"></div>
   </div>
-</div><!-- /gallery -->
+</div>
 
-<!-- FOOTER -->
-<footer id="mainFooter">
+<!-- FOOTER (secret button hidden here) -->
+<footer id="mainFooter" style="position:relative">
   <div class="footer-top">
     <div>
       <div class="footer-logo">ATLAS</div>
-      <p class="footer-tagline">Журнал для тех, кто путешествует осмысленно. Каждая история честная, каждый маршрут проверенный.</p>
+      <p class="footer-tagline">Журнал для тих, хто подорожує осмислено. Кожна історія чесна, кожен маршрут перевірений.</p>
       <div class="footer-social">
         <span class="soc-btn">in</span><span class="soc-btn">tw</span><span class="soc-btn">ig</span><span class="soc-btn">yt</span>
       </div>
     </div>
-    <div class="fc"><h5>Рубрики</h5><ul><li><button onclick="goPage('guides')">Репортажи</button></li><li><button onclick="goPage('guides')">Гиды</button></li><li><button onclick="goPage('guides')">Практика</button></li><li><button onclick="goPage('guides')">Гастрономия</button></li></ul></div>
-    <div class="fc"><h5>Направления</h5><ul><li><button onclick="goPage('destinations')">Европа</button></li><li><button onclick="goPage('destinations')">Азия</button></li><li><button onclick="goPage('destinations')">Африка</button></li><li><button onclick="goPage('destinations')">Америка</button></li></ul></div>
-    <div class="fc"><h5>Инструменты</h5><ul><li><button onclick="goPage('quiz')">Квиз направлений</button></li><li><button onclick="goPage('calculator')">Калькулятор</button></li><li><button onclick="goPage('gallery')">Галерея</button></li><li><a href="#">Рассылка</a></li></ul></div>
+    <div class="fc"><h5>Рубрики</h5><ul><li><button onclick="goPage('guides')">Репортажі</button></li><li><button onclick="goPage('guides')">Гіди</button></li><li><button onclick="goPage('guides')">Практика</button></li><li><button onclick="goPage('guides')">Гастрономія</button></li></ul></div>
+    <div class="fc"><h5>Напрямки</h5><ul><li><button onclick="goPage('destinations')">Європа</button></li><li><button onclick="goPage('destinations')">Азія</button></li><li><button onclick="goPage('destinations')">Африка</button></li><li><button onclick="goPage('destinations')">Америка</button></li></ul></div>
+    <div class="fc"><h5>Інструменти</h5><ul><li><button onclick="goPage('quiz')">Квіз напрямків</button></li><li><button onclick="goPage('calculator')">Калькулятор</button></li><li><button onclick="goPage('gallery')">Галерея</button></li><li><a href="#">Розсилка</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 ATLAS — Журнал Путешественника</span>
+    <span>© 2026 ATLAS — Журнал Мандрівника</span>
     <span>Фото: <a href="https://unsplash.com" target="_blank">Unsplash</a></span>
   </div>
+  <!-- 🔒 SECRET BUTTON — practically invisible, hidden in the bottom center of the footer -->
+  <button id="secretBtn" onclick="openQuestModal()" title=""></button>
 </footer>
 
 <script>
-// ──────────────────────────────────────────────
-// CURSOR
-// ──────────────────────────────────────────────
+// ─── CURSOR ───
 const cur = document.getElementById('cur');
 document.addEventListener('mousemove', e => {
   cur.style.left = e.clientX + 'px';
@@ -1046,9 +1231,7 @@ document.querySelectorAll('a,button,.dest-card,.dest-full-card,.feat-main,.feat-
   el.addEventListener('mouseleave', () => cur.classList.remove('big'));
 });
 
-// ──────────────────────────────────────────────
-// NAV + SCROLL
-// ──────────────────────────────────────────────
+// ─── NAV + SCROLL ───
 const nav = document.getElementById('nav');
 const prog = document.getElementById('prog');
 const btt = document.getElementById('btt');
@@ -1060,9 +1243,7 @@ window.addEventListener('scroll', () => {
 });
 btt.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
 
-// ──────────────────────────────────────────────
-// PAGE NAVIGATION
-// ──────────────────────────────────────────────
+// ─── PAGE NAVIGATION ───
 function goPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -1074,9 +1255,7 @@ function goPage(id) {
   setTimeout(initReveal, 80);
 }
 
-// ──────────────────────────────────────────────
-// SCROLL REVEAL
-// ──────────────────────────────────────────────
+// ─── SCROLL REVEAL ───
 function initReveal() {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);} });
@@ -1085,9 +1264,7 @@ function initReveal() {
 }
 initReveal();
 
-// ──────────────────────────────────────────────
-// MOBILE MENU
-// ──────────────────────────────────────────────
+// ─── MOBILE MENU ───
 const mobMenu = document.getElementById('mobMenu');
 const mobBtn = document.getElementById('mobBtn');
 let mobOpen = false;
@@ -1098,27 +1275,25 @@ function toggleMob(){
   if(mobOpen){spans[0].style.transform='rotate(45deg) translate(4px,4px)';spans[1].style.opacity='0';spans[2].style.transform='rotate(-45deg) translate(4px,-4px)';}
   else{spans[0].style.transform='';spans[1].style.opacity='';spans[2].style.transform='';}
 }
-function closeMob(){ mobOpen=false; mobMenu.classList.remove('open'); toggleMob(); toggleMob(); }
+function closeMob(){ if(mobOpen){toggleMob();} }
 
-// ──────────────────────────────────────────────
-// SEARCH
-// ──────────────────────────────────────────────
+// ─── SEARCH ───
 const searchData = [
-  {tag:'Марокко',title:'Лабиринты Феса: потерянный во времени',id:'fes'},
-  {tag:'Чили',title:'Патагония: конец земли',id:'patagonia'},
-  {tag:'Япония',title:'Киото в ноябре: алые клёны Арасияма',id:'kyoto'},
-  {tag:'Италия',title:'Итальянский юг: от Неаполя до Сицилии',id:'italy'},
-  {tag:'Перу',title:'Тропа Инков: 4 дня к Мачу-Пикчу',id:'peru'},
-  {tag:'Мальдивы',title:'Острова без туристического ажиотажа',id:'maldives'},
-  {tag:'Советы',title:'Как спать в самолёте и прилетать отдохнувшим',id:'sleep'},
-  {tag:'Финансы',title:'Дешевле авиабилеты: правило 45 дней',id:'tickets'},
-  {tag:'Советы',title:'Только ручная кладь: 7 кг, 14 дней',id:'packing'},
-  {tag:'Безопасность',title:'Страховка путешественника',id:'insurance'},
-  {tag:'Исландия',title:'Рейкьявик и золотое кольцо',id:'iceland'},
-  {tag:'Грузия',title:'Тбилиси и военно-грузинская дорога',id:'georgia'},
-  {tag:'Норвегия',title:'Фьорды и острова Лофотены',id:'norway'},
-  {tag:'Оман',title:'Маскат и дюны Вахиба',id:'oman'},
-  {tag:'Португалия',title:'Лиссабон и Алгарве',id:'portugal'},
+  {tag:'Марокко',title:'Лабіринти Фесу: загублений у часі',id:'fes'},
+  {tag:'Чилі',title:'Патагонія: край землі',id:'patagonia'},
+  {tag:'Японія',title:'Кіото у листопаді: червоні клени Арасіями',id:'kyoto'},
+  {tag:'Італія',title:'Італійський південь: від Неаполя до Сицилії',id:'italy'},
+  {tag:'Перу',title:'Стежка Інків: 4 дні до Мачу-Пікчу',id:'peru'},
+  {tag:'Мальдіви',title:'Острови без туристичного ажіотажу',id:'maldives'},
+  {tag:'Поради',title:'Як спати в літаку та прилітати відпочившим',id:'sleep'},
+  {tag:'Фінанси',title:'Дешевші авіаквитки: правило 45 днів',id:'tickets'},
+  {tag:'Поради',title:'Тільки ручна поклажа: 7 кг, 14 днів',id:'packing'},
+  {tag:'Безпека',title:'Страховка мандрівника',id:'insurance'},
+  {tag:'Ісландія',title:'Рейк\'явік і золоте кільце',id:'iceland'},
+  {tag:'Грузія',title:'Тбілісі і Військово-Грузинська дорога',id:'georgia'},
+  {tag:'Норвегія',title:'Фіорди та острови Лофотени',id:'norway'},
+  {tag:'Оман',title:'Маскат і дюни Вахіба',id:'oman'},
+  {tag:'Португалія',title:'Лісабон і Алгарве',id:'portugal'},
 ];
 function openSearch(){document.getElementById('searchOverlay').classList.add('open');setTimeout(()=>document.getElementById('searchInput').focus(),100);}
 function closeSearch(){document.getElementById('searchOverlay').classList.remove('open');}
@@ -1127,236 +1302,250 @@ document.getElementById('searchInput').addEventListener('input', function(){
   const res = document.getElementById('searchResults');
   if(!q){res.innerHTML='';return;}
   const hits = searchData.filter(d=>d.title.toLowerCase().includes(q)||d.tag.toLowerCase().includes(q));
-  res.innerHTML = hits.length ? hits.map(h=>`<div class="s-result" onclick="closeSearch();openArticle('${h.id}')"><span class="s-result-tag">${h.tag}</span><span class="s-result-title">${h.title}</span></div>`).join('') : '<div class="s-result"><span class="s-result-tag">—</span><span class="s-result-title" style="color:var(--mid)">Ничего не найдено</span></div>';
+  res.innerHTML = hits.length ? hits.map(h=>`<div class="s-result" onclick="closeSearch();openArticle('${h.id}')"><span class="s-result-tag">${h.tag}</span><span class="s-result-title">${h.title}</span></div>`).join('') : '<div class="s-result"><span class="s-result-tag">—</span><span class="s-result-title" style="color:var(--mid)">Нічого не знайдено</span></div>';
 });
-document.addEventListener('keydown', e => { if(e.key==='Escape'){closeSearch();closeArticle();closeLb();} });
+document.addEventListener('keydown', e => { if(e.key==='Escape'){closeSearch();closeArticle();closeLb();closeQuestModal();} });
 
-// ──────────────────────────────────────────────
-// ARTICLES DATA
-// ──────────────────────────────────────────────
+// ─── SECRET QUEST BUTTON ───
+function openQuestModal() {
+  // Show toast first
+  const toast = document.getElementById('questToast');
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+    document.getElementById('questModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }, 1200);
+}
+function closeQuestModal() {
+  document.getElementById('questModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── ARTICLES DATA ───
 const articles = {
   fes: {
     tag:'Cover Story · Африка · Марокко',
-    title:'Лабиринты Феса: потерянный во времени',
+    title:'Лабіринти Фесу: загублений у часі',
     img:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80',
-    meta:['14 мин чтения','Репортаж','Ноябрь 2025'],
-    body:`<p>Я приехал в Фес в ноябре, когда туристы уже разъехались, а торговцы медины перестали улыбаться по обязанности. Таксист опустил меня у ворот Бab Boujloud — синих ворот с одной стороны и зелёных с другой — и сказал: «Удачи. Карты не помогут». Он был прав.</p>
-    <h3>Медина, которая не изменилась за 1000 лет</h3>
-    <p>Фес-эль-Бали — крупнейший в мире пешеходный город. Девять тысяч улочек, ни одного автомобиля, только ослы, несущие газовые баллоны и коробки с апельсинами. Здесь кожевенные мастерские Chouara работают по технологии XII века: рабочие стоят по пояс в чанах с мочой и птичьим помётом, размягчая кожу перед окраской.</p>
-    <blockquote>Если ты хочешь понять, как выглядел мир до промышленной революции — иди в Фес.</blockquote>
+    meta:['14 хв читання','Репортаж','Листопад 2025'],
+    body:`<p>Я приїхав до Фесу в листопаді, коли туристи вже роз'їхалися, а торговці медини перестали посміхатися по обов'язку. Таксист висадив мене біля воріт Bab Boujloud — синіх воріт з одного боку і зелених з іншого — і сказав: «Удачі. Карти не допоможуть». Він мав рацію.</p>
+    <h3>Медина, яка не змінилася за 1000 років</h3>
+    <p>Фес-ель-Балі — найбільше у світі пішохідне місто. Дев'ять тисяч вуличок, жодного автомобіля, тільки осли, що несуть газові балони й ящики з апельсинами. Тут шкіряні майстерні Chouara працюють за технологією XII століття: робітники стоять по пояс у чанах із сечею і пташиним послідом, розм'якшуючи шкіру перед фарбуванням.</p>
+    <blockquote>Якщо хочеш зрозуміти, як виглядав світ до промислової революції — іди до Фесу.</blockquote>
     <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=1200&q=80" alt="Фес">
-    <h3>Практика: как не заблудиться</h3>
-    <p>Нанять гида на первый день — не уступка, а мудрость. Медина состоит из 14 районов, каждый со своим ремеслом: ткачи, кузнецы, гончары, красильщики. Без проводника вы потеряете 3 часа в пяти метрах от своего риада.</p>
-    <p>Лучшие часы для посещения кожевен: 9–11 утра. Торговцы у смотровых площадок дадут вам веточку мяты — держите её у носа, аромат красильни специфический. Вход на смотровую площадку бесплатный, если вы делаете вид, что заинтересованы в покупке.</p>
-    <h3>Где остановиться</h3>
-    <p>Риад в медине — единственный правильный выбор. Снаружи — облупившаяся стена без окон. Внутри — мозаичный двор с фонтаном, галереи на трёх этажах, завтрак на террасе с видом на минареты. Средняя цена — 60–120 € за ночь. Риад Laaroussa и Dar Seffarine — из проверенных.</p>`
+    <h3>Практика: як не заблукати</h3>
+    <p>Найняти гіда на перший день — не поступка, а мудрість. Медина складається з 14 кварталів, кожен зі своїм ремеслом: ткачі, ковалі, гончарі, фарбарники. Без провідника ви витратите 3 години в п'яти метрах від свого ріада.</p>
+    <p>Найкращі години для відвідування шкіряних майстерень: 9–11 ранку. Торговці біля оглядових майданчиків дадуть вам гілочку м'яти — тримайте її біля носа, аромат фарбарні специфічний.</p>
+    <h3>Де зупинитися</h3>
+    <p>Ріад у медині — єдиний правильний вибір. Зовні — облупована стіна без вікон. Всередині — мозаїчний двір із фонтаном, галереї на трьох поверхах, сніданок на терасі з видом на мінарети. Середня ціна — 60–120 € за ніч.</p>`
   },
   patagonia: {
-    tag:'Природа · Южная Америка · Чили',
-    title:'Торрес-дель-Пайне: конец земли',
+    tag:'Природа · Південна Америка · Чилі',
+    title:'Торрес-дель-Пайне: край землі',
     img:'https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner/public/live_banner/Argentin-Patagonia.jpg',
-    meta:['10 мин чтения','Репортаж','Январь 2026'],
-    body:`<p>Патагония начинается с отказа. Отказа от связи, от расписания, от уверенности в погоде. Здесь ветер дует горизонтально и за один день можно пережить все четыре сезона. Это и делает её лучшим местом на земле.</p>
+    meta:['10 хв читання','Репортаж','Січень 2026'],
+    body:`<p>Патагонія починається з відмови. Відмови від зв'язку, від розкладу, від впевненості в погоді. Тут вітер дме горизонтально і за один день можна пережити всі чотири сезони. Це і робить її найкращим місцем на землі.</p>
     <h3>Парк Торрес-дель-Пайне</h3>
-    <p>Три гранитных башни — Torres — возвышаются над ледниковым озером как декорации к фантастическому фильму. Главный треккинг — «W-маршрут» — занимает 5 дней и охватывает все ключевые пейзажи: ледник Грей, долину Французов и, в финале, подъём к самим башням на рассвете.</p>
-    <blockquote>Я поднялся к Torres в 4 утра. Когда солнце коснулось вершин, за спиной у меня заплакал немец-сорокалетний турист. Я понял его.</blockquote>
-    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80" alt="Патагония пейзаж">
-    <h3>Логистика</h3>
-    <p>Ближайший город — Пуэрто-Наталес, 112 км от парка. Билеты в парк и места в refugio (горных хижинах) нужно бронировать за 6 месяцев. Сезон: ноябрь–март. Апрель–октябрь — закрыт или доступен только опытным. Снаряжение: ветрозащита обязательна, дождевик не опционален.</p>`
+    <p>Три гранітні вежі — Torres — здіймаються над льодовиковим озером як декорації до фантастичного фільму. Головний трекінг — «W-маршрут» — займає 5 днів і охоплює всі ключові пейзажі: льодовик Грей, долину Французів і, у фіналі, підйом до самих веж на світанку.</p>
+    <blockquote>Я піднявся до Torres о 4 ранку. Коли сонце торкнулося вершин, за моєю спиною заплакав сорокарічний турист-німець. Я його зрозумів.</blockquote>
+    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80" alt="Патагонія пейзаж">
+    <h3>Логістика</h3>
+    <p>Найближче місто — Пуерто-Наталес, 112 км від парку. Квитки в парк і місця в refugio (гірських хижинах) потрібно бронювати за 6 місяців. Сезон: листопад–березень.</p>`
   },
   kyoto: {
-    tag:'Культура · Азия · Япония',
-    title:'Киото в ноябре: алые клёны Арасияма',
+    tag:'Культура · Азія · Японія',
+    title:'Кіото у листопаді: червоні клени Арасіями',
     img:'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=1200&q=80',
-    meta:['8 мин чтения','Гид','Октябрь 2025'],
-    body:`<p>Киото — это Япония без Японии. Пока Токио мигает неоном и торопится, Киото неспешно пьёт матча и смотрит на опадающие кленовые листья. В ноябре сезон момидзи — «красных листьев» — превращает город в живую картину.</p>
-    <h3>Арасияма: бамбук и клёны</h3>
-    <p>Бамбуковая роща выглядит лучше на рассвете, в 6 утра, когда туристов ещё нет. Чуть дальше — храм Тенрю-дзи с садом, внесённым в UNESCO, и река Оигава с традиционными лодками. В ноябре берега пылают малиновым и оранжевым.</p>
-    <img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=1200&q=80" alt="Киото осень">
-    <h3>Маршрут на 3 дня</h3>
-    <p><strong>День 1.</strong> Арасияма — рассвет в бамбуковой роще — храм Тенрю-дзи — обед в местном ресторане (бронь за 2 месяца) — вечер в Гион, квартале гейш.<br><strong>День 2.</strong> Фусими-Инари — 10 000 тории в горном лесу — потом Нисики-маркет и рамен на ужин.<br><strong>День 3.</strong> Философская тропа вдоль канала в листьях — храм Нандзэн-дзи — чайная церемония — отъезд.</p>
-    <blockquote>Киото требует медленного ритма. Его нельзя «пройти» — только почувствовать.</blockquote>`
+    meta:['8 хв читання','Гід','Жовтень 2025'],
+    body:`<p>Кіото — це Японія без Японії. Поки Токіо миготить неоном і поспішає, Кіото неквапливо п'є матча і дивиться на опале кленове листя. У листопаді сезон момідзі — «червоного листя» — перетворює місто на живу картину.</p>
+    <h3>Арасіяма: бамбук і клени</h3>
+    <p>Бамбуковий гай виглядає краще на світанку, о 6 ранку, коли туристів ще немає. Трохи далі — храм Тенрю-дзі з садом, внесеним до ЮНЕСКО, і річка Оїгава з традиційними човнами. У листопаді береги палають малиновим і помаранчевим.</p>
+    <img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=1200&q=80" alt="Кіото осінь">
+    <h3>Маршрут на 3 дні</h3>
+    <p><strong>День 1.</strong> Арасіяма — світанок у бамбуковому гаю — храм Тенрю-дзі — обід — вечір у Ґіоні, кварталі гейш.<br><strong>День 2.</strong> Фусімі-Інарі — 10 000 торії у гірському лісі — ринок Нісікі — рамен на вечерю.<br><strong>День 3.</strong> Філософська стежка вздовж каналу в листі — храм Нандзен-дзі — чайна церемонія.</p>
+    <blockquote>Кіото вимагає повільного ритму. Його не можна «пройти» — тільки відчути.</blockquote>`
   },
   italy: {
-    tag:'Гастрономия · Европа · Италия',
-    title:'Итальянский юг: от Неаполя до Сицилии',
+    tag:'Гастрономія · Європа · Італія',
+    title:'Італійський південь: від Неаполя до Сицилії',
     img:'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=80',
-    meta:['12 мин чтения','Маршрут','Сентябрь 2025'],
-    body:`<p>Итальянский север продаётся лучше: Венеция, Флоренция, озёра. Но настоящая Италия — на юге. Где меньше лоска и больше жизни, где пицца лучше, а люди не торопятся.</p>
-    <h3>Неаполь: хаос как искусство</h3>
-    <p>Неаполь пугает с первого взгляда и влюбляет через 24 часа. Центр города — UNESCO-наследие, но главное — пиццерия L'Antica Pizzeria da Michele на via Cesare Sersale. Очередь в 11 утра, два вида пицц (маргарита и маринара), чек на 5€. Это правило Неаполя: лучшее стоит дёшево.</p>
-    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80" alt="Неаполь пицца">
-    <h3>Амальфийское побережье</h3>
-    <p>53 километра самой красивой дороги в мире. Позитано — для фото, Равелло — для тишины, Амальфи — для лимончелло прямо с деревьев. Арендуй мотобайк только если не боишься. Маршрутка — для мудрых.</p>
-    <h3>Сицилия: Палермо и Агридженто</h3>
-    <p>Рынок Балларо в Палермо — самый живой рынок Европы: уличная еда, крики продавцов, запах жареной рыбы. Долина Храмов в Агридженто — греческая архитектура лучше, чем в Афинах. Серьёзно.</p>
-    <blockquote>На юге Италии не торопятся. Это не лень — это философия.</blockquote>`
+    meta:['12 хв читання','Маршрут','Вересень 2025'],
+    body:`<p>Італійська північ продається краще: Венеція, Флоренція, озера. Але справжня Італія — на півдні. Де менше лиску і більше життя, де піца краща, а люди не поспішають.</p>
+    <h3>Неаполь: хаос як мистецтво</h3>
+    <p>Неаполь лякає з першого погляду і закохує через 24 години. Центр міста — спадщина ЮНЕСКО, але головне — піцерія L'Antica Pizzeria da Michele. Черга о 11 ранку, два види піци (маргарита і маринара), чек на 5€. Це правило Неаполя: найкраще коштує дешево.</p>
+    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80" alt="Неаполь піца">
+    <h3>Амальфійське узбережжя</h3>
+    <p>53 кілометри найкрасивішої дороги у світі. Позітано — для фото, Равелло — для тиші, Амальфі — для лімончелло. Орендуй мотобайк лише якщо не боїшся.</p>
+    <h3>Сицилія: Палермо та Агрідженто</h3>
+    <p>Ринок Балларо в Палермо — найжвавіший ринок Європи. Долина Храмів в Агрідженто — грецька архітектура краща, ніж в Афінах. Серйозно.</p>
+    <blockquote>На півдні Італії не поспішають. Це не лінь — це філософія.</blockquote>`
   },
   peru: {
-    tag:'Треккинг · Южная Америка · Перу',
-    title:'Тропа Инков: 4 дня к Мачу-Пикчу',
+    tag:'Трекінг · Південна Америка · Перу',
+    title:'Стежка Інків: 4 дні до Мачу-Пікчу',
     img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw_yrO6D4l4rEKHYqhJVw_mS49i_MpK6ZBSQ&s',
-    meta:['14 мин чтения','Практический гид','Август 2025'],
-    body:`<p>Мачу-Пикчу можно добраться на поезде за 3 часа. Но тропа Инков — это 43 км пешком через 4 горных перевала, облачные леса и 30+ археологических объектов. Финал — Солнечные Ворота на рассвете с видом на затерянный город внизу.</p>
-    <h3>Пермиты: ключевой вопрос</h3>
-    <p>Пермиты — 500 штук в день — разбираются за часы после открытия продаж в октябре-ноябре на следующий год. Бронировать через Peru Rail или лицензированные агентства. Без пермита — никакой тропы, только поезд.</p>
-    <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=80" alt="Мачу-Пикчу">
-    <h3>4 дня: что ждёт</h3>
-    <p><strong>День 1</strong> (13 км): Старт из Куско, плавный набор высоты, первые руины Llactapata. Сложность: умеренная.<br><strong>День 2</strong> (12 км): Перевал Мёртвой Женщины — 4215 м над уровнем моря. Самый трудный день. Акклиматизируйся в Куско минимум 2 дня перед стартом.<br><strong>День 3</strong> (10 км): Облачный лес, руины Phuyupatamarca — «город в облаках». Сходство с Мачу-Пикчу, но без туристов.<br><strong>День 4</strong> (8 км): Подъём в 3:30 к Solpuerta — Солнечным Воротам. Мачу-Пикчу открывается снизу как на ладони.</p>
-    <blockquote>Мачу-Пикчу с тропы — это не то же самое, что с автобуса. Это заслуженное.</blockquote>`
+    meta:['14 хв читання','Практичний гід','Серпень 2025'],
+    body:`<p>До Мачу-Пікчу можна дістатися поїздом за 3 години. Але Стежка Інків — це 43 км пішки через 4 гірські перевали, хмарні ліси і 30+ археологічних об'єктів. Фінал — Сонячні Ворота на світанку з видом на загублене місто внизу.</p>
+    <h3>Перміти: ключове питання</h3>
+    <p>500 перміт на день — розбираються за години після відкриття продажів у жовтні-листопаді на наступний рік. Бронювати через Peru Rail або ліцензовані агентства.</p>
+    <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=80" alt="Мачу-Пікчу">
+    <h3>4 дні: що чекає</h3>
+    <p><strong>День 1</strong> (13 км): Старт з Куско, плавний набір висоти, перші руїни Llactapata.<br><strong>День 2</strong> (12 км): Перевал Мертвої Жінки — 4215 м. Найважчий день. Акліматизуйся в Куско мінімум 2 дні.<br><strong>День 3</strong> (10 км): Хмарний ліс, руїни Phuyupatamarca.<br><strong>День 4</strong> (8 км): Підйом о 3:30 до Солнечних Воріт.</p>
+    <blockquote>Мачу-Пікчу зі стежки — це не те саме, що з автобуса. Це заслужене.</blockquote>`
   },
   maldives: {
-    tag:'Отдых · Индийский океан · Мальдивы',
-    title:'Мальдивы без ажиотажа и без разорения',
+    tag:'Відпочинок · Індійський океан · Мальдіви',
+    title:'Мальдіви без ажіотажу і без розорення',
     img:'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1200&q=80',
-    meta:['7 мин чтения','Практика','Декабрь 2025'],
-    body:`<p>Мальдивы продают как luxury-направление. Overwater bungalow, $500 за ночь, собственный пляж. Всё это существует. Но есть и другие Мальдивы — местные острова, гестхаусы, ежедневные закаты цвета манго за $40 в сутки.</p>
-    <h3>Система атоллов</h3>
-    <p>1200 островов, 26 атоллов. Туристические курорты — на «необитаемых» островах, куда везут катером. Местные острова — с населением, мечетями, магазинами. Жить там разрешили только с 2009 года, и рынок ещё молодой.</p>
-    <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=80" alt="Мальдивы вода">
-    <h3>Лучшие острова для гостевых домов</h3>
-    <p><strong>Maafushi</strong> — самый туристический из местных, хорошая инфраструктура, доступ к бикини-пляжу (для иностранцев).<br><strong>Thulusdhoo</strong> — серфинг, тишина, отличный коралловый риф.<br><strong>Dhigurah</strong> — китовые акулы круглый год, потрясающий снорклинг.</p>
-    <blockquote>Лучший закат в жизни я видел с крыши гестхауса на Maafushi. Стоил $0.</blockquote>`
+    meta:['7 хв читання','Практика','Грудень 2025'],
+    body:`<p>Мальдіви продають як luxury-напрямок. Overwater bungalow, $500 за ніч, власний пляж. Все це існує. Але є й інші Мальдіви — місцеві острови, гестхауси, щоденні заходи сонця кольору манго за $40 на добу.</p>
+    <h3>Система атолів</h3>
+    <p>1200 островів, 26 атолів. Туристичні курорти — на «необитаємих» островах. Місцеві острови — з населенням, мечетями, магазинами. Жити там дозволили лише з 2009 року.</p>
+    <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=80" alt="Мальдіви вода">
+    <h3>Найкращі острови для гостьових будинків</h3>
+    <p><strong>Maafushi</strong> — найтуристичніший з місцевих, хороша інфраструктура.<br><strong>Thulusdhoo</strong> — серфінг, тиша, чудовий кораловий риф.<br><strong>Dhigurah</strong> — китові акули цілий рік.</p>
+    <blockquote>Найкращий захід сонця у житті я бачив з даху гестхаусу на Maafushi. Коштував $0.</blockquote>`
   },
   sleep: {
     tag:'Практика · Лайфхаки',
-    title:'Как спать в самолёте и прилетать живым',
+    title:'Як спати в літаку та прилітати живим',
     img:'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1200&q=80',
-    meta:['6 мин чтения','Инструкция'],
-    body:`<p>400 000 км налёта. Примерно 180 длинных рейсов. За 12 лет я выработал систему, которая позволяет спать в любом кресле и просыпаться если не бодрым, то хотя бы функциональным.</p>
-    <h3>Место: всё решает</h3>
-    <p>Кресло у иллюминатора — единственный вариант для сна. Можно опереться, никто не будет тревожить. В эконом-классе избегайте последних рядов (не откидываются) и первого ряда (нет карманов перед вами). Лучшие места — ExpertFlyer или SeatGuru до покупки.</p>
-    <h3>Аксессуары</h3>
-    <p>Маска для сна — обязательна, дешёвая авиационная не работает, берите плотную 3D-маску. Беруши или шумоподавляющие наушники. Дорожная подушка — U-образная под шею, не на колени. Носки — снимайте обувь.</p>
-    <h3>Мелатонин и режим</h3>
-    <p>Мелатонин 0.5–1 мг — не снотворное, а сигнал организму. Принимайте за 30 минут до желаемого засыпания. При перелёте на восток — в первую ночь по местному времени назначения. Избегайте алкоголя на борту: обезвоживает и ухудшает качество сна.</p>
-    <blockquote>Перелёт Москва–Токио в 9 часов. Я сплю 6 из них. Это не везение — это тренировка.</blockquote>`
+    meta:['6 хв читання','Інструкція'],
+    body:`<p>400 000 км нальоту. Приблизно 180 довгих рейсів. За 12 років я виробив систему, яка дозволяє спати в будь-якому кріслі.</p>
+    <h3>Місце: все вирішує</h3>
+    <p>Крісло біля ілюмінатора — єдиний варіант для сну. Можна спертися, ніхто не турбуватиме. В економ-класі уникайте останніх рядів (не відкидаються) і першого ряду.</p>
+    <h3>Аксесуари</h3>
+    <p>Маска для сну — обов'язкова, дешева авіаційна не працює, беріть щільну 3D-маску. Беруші або навушники з шумозаглушенням. Дорожня подушка — U-подібна під шию. Шкарпетки — знімайте взуття.</p>
+    <h3>Мелатонін і режим</h3>
+    <p>Мелатонін 0.5–1 мг — не снодійне, а сигнал організму. Приймайте за 30 хвилин до бажаного засипання. Уникайте алкоголю на борту.</p>
+    <blockquote>Переліт Київ–Токіо 9 годин. Я сплю 6 із них. Це не везіння — це тренування.</blockquote>`
   },
   tickets: {
-    tag:'Финансы · Авиабилеты',
-    title:'Дешевле авиабилеты: правило 45 дней и другие секреты',
+    tag:'Фінанси · Авіаквитки',
+    title:'Дешевші авіаквитки: правило 45 днів та інші секрети',
     img:'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&q=80',
-    meta:['5 мин чтения','Советы'],
-    body:`<p>Авиакомпании используют динамическое ценообразование с сотнями переменных. Но паттерны существуют, и их можно использовать.</p>
-    <h3>Правило 45 дней</h3>
-    <p>Статистически: минимальные цены на большинство маршрутов появляются за 40–60 дней до вылета. Это «окно Goldilocks» — достаточно рано, чтобы не переплатить, достаточно поздно, чтобы авиакомпании снизили цену на незаполненные места.</p>
+    meta:['5 хв читання','Поради'],
+    body:`<p>Авіакомпанії використовують динамічне ціноутворення зі сотнями змінних. Але патерни існують.</p>
+    <h3>Правило 45 днів</h3>
+    <p>Статистично: мінімальні ціни на більшість маршрутів з'являються за 40–60 днів до вильоту. Це «вікно Goldilocks» — достатньо рано, щоб не переплатити, достатньо пізно, щоб авіакомпанії знизили ціну.</p>
     <h3>Tuesday trick</h3>
-    <p>Авиакомпании объявляют скидки в понедельник-вторник. Конкуренты отвечают во вторник-среду. Лучший момент для покупки — вторник, 14:00 по восточному времени США.</p>
-    <h3>Инструменты</h3>
-    <p>Google Flights — для мониторинга и уведомлений. Momondo — для поиска скрытых тарифов. Kiwi.com — для сложных маршрутов. Skiplagged — для «скрытых городов» (легально, но рискованно).</p>
-    <blockquote>Я сэкономил $400 на билете Москва–Лима, покупая в разные дни через разные браузеры. Работает.</blockquote>`
+    <p>Авіакомпанії оголошують знижки в понеділок-вівторок. Конкуренти відповідають у вівторок-середу. Найкращий момент для купівлі — вівторок, 14:00.</p>
+    <h3>Інструменти</h3>
+    <p>Google Flights — для моніторингу. Momondo — для прихованих тарифів. Kiwi.com — для складних маршрутів.</p>
+    <blockquote>Я заощадив $400 на квитку Київ–Ліма, купуючи в різні дні через різні браузери. Працює.</blockquote>`
   },
   packing: {
-    tag:'Практика · Сборы',
-    title:'Только ручная кладь: 7 кг, 14 дней в любой климатической зоне',
+    tag:'Практика · Збори',
+    title:'Тільки ручна поклажа: 7 кг, 14 днів у будь-якій кліматичній зоні',
     img:'https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?w=1200&q=80',
-    meta:['5 мин чтения','Чеклист'],
-    body:`<p>Проверенный принцип: чем меньше вещей, тем свободнее путешествие. Никакой очереди у ленты, никакого риска потерянного багажа, полная мобильность.</p>
-    <h3>Капсульный гардероб</h3>
-    <p>Принцип: всё сочетается со всем. Нейтральные цвета — серый, тёмно-синий, белый, оливковый. Минимальный набор для умеренного климата: 2 футболки + 1 рубашка-оверсайз (она же верхний слой вечером) + 1 пара брюк + 1 шорты + 1 тонкая флиска + 1 дождевик.</p>
-    <h3>Обувь — главный пожиратель места</h3>
-    <p>Максимум 2 пары: универсальные кроссовки (они же треккинговые, они же вечерние при правильном выборе) + одни сандалии/флипы для пляжа. Всё остальное — лишнее.</p>
-    <blockquote>Я обошёл 14 стран за месяц с 6 кг. Единственное, чего мне не хватало — это нескольких сантиметров места в кафе, куда я ставил рюкзак.</blockquote>`
+    meta:['5 хв читання','Чекліст'],
+    body:`<p>Перевірений принцип: чим менше речей, тим вільніша подорож. Ніякої черги біля стрічки, ніякого ризику загубленого багажу.</p>
+    <h3>Капсульний гардероб</h3>
+    <p>Принцип: все поєднується з усім. Нейтральні кольори — сірий, темно-синій, білий, оливковий. Мінімальний набір: 2 футболки + 1 сорочка-оверсайз + 1 пара штанів + 1 шорти + 1 тонка фліска + 1 дощовик.</p>
+    <h3>Взуття — головний пожирач місця</h3>
+    <p>Максимум 2 пари: універсальні кросівки + сандалі для пляжу. Все інше — зайве.</p>
+    <blockquote>Я об'їхав 14 країн за місяць із 6 кг. Єдине, чого мені бракувало — кількох сантиметрів місця в кафе, куди я ставив рюкзак.</blockquote>`
   },
   insurance: {
-    tag:'Безопасность · Финансы',
-    title:'Страховка путешественника: что реально нужно и от чего зависит жизнь',
+    tag:'Безпека · Фінанси',
+    title:'Страховка мандрівника: що реально потрібно',
     img:'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=1200&q=80',
-    meta:['5 мин чтения','Советы'],
-    body:`<p>Мой редактор сломал ногу в Таиланде. Страховка покрыла 7 000 €. Другой знакомый был без страховки при аппендиците в США. Счёт — 35 000 $. Вот и весь разговор.</p>
-    <h3>Что обязательно покрывать</h3>
-    <p>Медицинские расходы — минимум 50 000 € для Европы, 100 000 $ для США. Эвакуация — часто стоит дороже лечения. Отмена поездки — если заболел или форс-мажор. Потеря багажа — только как бонус, не главное.</p>
-    <h3>Что не покрывается в дешёвых полисах</h3>
-    <p>Занятия спортом (лыжи, дайвинг, мотобайк) — требует отдельного rider. Алкогольное опьянение — стандартное исключение. Хронические заболевания — читайте мелкий шрифт. Пандемии — у большинства компаний исключение.</p>
-    <blockquote>Страховка — это не расход. Это инвестиция в возможность вернуться домой.</blockquote>`
+    meta:['5 хв читання','Поради'],
+    body:`<p>Мій редактор зламав ногу в Таїланді. Страховка покрила 7 000 €. Інший знайомий був без страховки при апендициті в США. Рахунок — 35 000 $. Ось і вся розмова.</p>
+    <h3>Що обов'язково покривати</h3>
+    <p>Медичні витрати — мінімум 50 000 € для Європи, 100 000 $ для США. Евакуація — часто коштує дорожче лікування. Скасування поїздки — якщо захворів або форс-мажор.</p>
+    <h3>Що не покривається в дешевих полісах</h3>
+    <p>Заняття спортом (лижі, дайвінг, мотобайк) — потрібен окремий rider. Алкогольне сп'яніння — стандартне виключення. Хронічні захворювання — читайте дрібний шрифт.</p>
+    <blockquote>Страховка — це не витрата. Це інвестиція в можливість повернутися додому.</blockquote>`
   },
   asia_food: {
-    tag:'Гастрономия · Азия',
-    title:'Есть вкусно и безопасно в Азии: полное руководство',
+    tag:'Гастрономія · Азія',
+    title:'Їсти смачно і безпечно в Азії: повне керівництво',
     img:'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1200&q=80',
-    meta:['6 мин чтения','Советы'],
-    body:`<p>95% «животиков путешественника» — это не еда с рынка, а еда из туристических ресторанов с плохой ротацией. Уличная еда при высоком трафике — одна из самых безопасных.</p>
+    meta:['6 хв читання','Поради'],
+    body:`<p>95% «животиків мандрівника» — це не їжа з ринку, а їжа з туристичних ресторанів із поганою ротацією. Вулична їжа при великому трафіку — одна з найбезпечніших.</p>
     <h3>Правила</h3>
-    <p>Смотри, где едят местные. Лоток с очередью из 15 человек = свежая еда и высокая ротация. Пустой туристический ресторан = противоположное. Готовь на глазах = безопаснее холодных блюд. Избегай салатов и нарезанных фруктов на жаре.</p>
-    <h3>По странам</h3>
-    <p><strong>Таиланд</strong>: Pad Thai на улице лучше, чем в ресторане. Избегай морепродукты в жаркие дни вдали от побережья. <strong>Вьетнам</strong>: Фо с утра, свежее и горячее. Bánh mì — шедевр уличной еды. <strong>Индия</strong>: Вегетарианская тали в дхаба-ресторанах — безопаснее и вкуснее.</p>
-    <blockquote>Лучший чебурек в жизни я ел на рынке в Самарканде. Лучший рамен — в переулке Токио без вывески. Следуй за очередью.</blockquote>`
+    <p>Дивись, де їдять місцеві. Лоток із чергою з 15 людей = свіжа їжа та висока ротація. Порожній туристичний ресторан = навпаки. Готують на очах = безпечніше холодних страв.</p>
+    <h3>По країнах</h3>
+    <p><strong>Таїланд</strong>: Pad Thai на вулиці краще, ніж у ресторані. <strong>В'єтнам</strong>: Фо вранці, свіже і гаряче. Bánh mì — шедевр вуличної їжі. <strong>Індія</strong>: Вегетаріанська талі в дхаба-ресторанах — безпечніше і смачніше.</p>
+    <blockquote>Найкращий рамен — у провулку Токіо без вивіски. Слідуй за чергою.</blockquote>`
   },
   iceland: {
-    tag:'Природа · Европа · Исландия',
-    title:'Исландия: золотое кольцо, северное сияние и чёрные пляжи',
+    tag:'Природа · Європа · Ісландія',
+    title:'Ісландія: золоте кільце, північне сяйво і чорні пляжі',
     img:'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1200&q=80',
-    meta:['10 мин чтения','Маршрут'],
-    body:`<p>Исландия — единственная страна, где гейзер, водопад, ледник и вулкан находятся в одном часе езды друг от друга. И где в феврале можно увидеть северное сияние прямо из душа бассейна.</p>
-    <h3>Золотое кольцо: 3 дня</h3>
-    <p>Тингведлир — национальный парк, где плиты двух континентов расходятся на 2 см в год. Гейзир — эруптирует каждые 8 минут, точнее любого расписания. Гульфосс — двухуровневый водопад, обледенелый в зимних брызгах.</p>
-    <img src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1200&q=80" alt="Исландия сияние">
-    <h3>Северное сияние</h3>
-    <p>Сезон: сентябрь–март. Нужны: тёмное небо (нет полнолуния), активность KP3+ (приложение My Aurora Forecast), терпение. Лучшие места: Снайфелльснес, Вик, Акюрейри. Фотографируй на ISO 1600, выдержка 15–25 секунд.</p>
-    <blockquote>Исландия учит одному: планируй маршрут, но не привязывайся к погоде. Она решает сама.</blockquote>`
+    meta:['10 хв читання','Маршрут'],
+    body:`<p>Ісландія — єдина країна, де гейзер, водоспад, льодовик і вулкан знаходяться в одній годині їзди один від одного.</p>
+    <h3>Золоте кільце: 3 дні</h3>
+    <p>Тінгведлір — національний парк, де плити двох континентів розходяться на 2 см на рік. Гейсір — вивергається кожні 8 хвилин. Гульфосс — дворівневий водоспад.</p>
+    <img src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1200&q=80" alt="Ісландія сяйво">
+    <h3>Північне сяйво</h3>
+    <p>Сезон: вересень–березень. Потрібні: темне небо, активність KP3+, терпіння. Фотографуй на ISO 1600, витримка 15–25 секунд.</p>
+    <blockquote>Ісландія вчить одному: плануй маршрут, але не прив'язуйся до погоди. Вона вирішує сама.</blockquote>`
   },
   georgia: {
-    tag:'Кавказ · Грузия',
-    title:'Грузия: вино, хинкали и самые красивые горы мира',
+    tag:'Кавказ · Грузія',
+    title:'Грузія: вино, хінкалі та найкрасивіші гори світу',
     img:'https://images.unsplash.com/photo-1565073182887-6bcefbe225b1?w=1200&q=80',
-    meta:['9 мин чтения','Гид'],
-    body:`<p>Грузия — страна, которая обнимает тебя с первой минуты. Аэропорт Тбилиси, 2 ночи, стол с хинкали, ткемали и чачей, и ты уже не хочешь уезжать. Говорят, так уходят недели.</p>
-    <h3>Тбилиси: 2 дня</h3>
-    <p>Старый город (Абанотубани) — серные бани, балконы с деревянной резьбой, запах хлеба из тандыра. Нарикала — крепость над городом, лучший закат. Проспект Руставели — дорогие рестораны, можно смотреть, есть лучше в переулках. Надо: хинкали в Pasanauri (не Тбилиси, но едут туда).</p>
-    <img src="https://images.unsplash.com/photo-1534885320675-b08aa131cc5e?w=1200&q=80" alt="Тбилиси">
-    <h3>Сванетия: горы без аналогов</h3>
-    <p>Месхетия — на 5 дней. Ушгули — самое высокогорное постоянное поселение Европы (2200 м). Средневековые башни, коровы на главной «улице», интернет появился в 2018 году. Дорога от Местии — 4 часа на джипе или 6 часов трекинга.</p>
-    <blockquote>Грузины произносят тост «Мир!» и смотрят тебе в глаза. Через неделю понимаешь, что они имеют в виду.</blockquote>`
+    meta:['9 хв читання','Гід'],
+    body:`<p>Грузія — країна, яка обіймає тебе з першої хвилини. Аеропорт Тбілісі, 2 ночі, стіл із хінкалі, ткемалі і чачею, і ти вже не хочеш їхати.</p>
+    <h3>Тбілісі: 2 дні</h3>
+    <p>Старе місто (Абанотубані) — сірчані лазні, балкони з дерев'яним різьбленням, запах хліба з тандиру. Нарікала — фортеця над містом, найкращий захід. Проспект Руставелі — дорогі ресторани, краще їсти в провулках.</p>
+    <img src="https://images.unsplash.com/photo-1534885320675-b08aa131cc5e?w=1200&q=80" alt="Тбілісі">
+    <h3>Сванетія: гори без аналогів</h3>
+    <p>Ушгулі — найвисокогірніше постійне поселення Європи (2200 м). Середньовічні вежі, корови на головній «вулиці», інтернет з'явився у 2018 році.</p>
+    <blockquote>Грузини виголошують тост «Мир!» і дивляться тобі у вічі. Через тиждень розумієш, що вони мають на увазі.</blockquote>`
   },
   norway: {
-    tag:'Скандинавия · Норвегия',
-    title:'Норвегия: фьорды, белые ночи и острова Лофотены',
+    tag:'Скандинавія · Норвегія',
+    title:'Норвегія: фіорди, білі ночі та острови Лофотени',
     img:'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1200&q=80',
-    meta:['10 мин чтения','Гид'],
-    body:`<p>В июне в Норвегии солнце не заходит. Совсем. В 2 ночи светло как в полдень. Это дезориентирует, но именно эти белые ночи делают Норвегию летом страной, которую невозможно забыть.</p>
-    <h3>Фьорды: главное слово</h3>
-    <p>Согне-фьорд — самый длинный и глубокий в мире. Гейранге-фьорд — UNESCO, знаменитые водопады «Семь сестёр». Флом — деревня у воды, откуда ходит легендарный поезд Flåmsbana.</p>
-    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=1200&q=80" alt="Норвегия фьорды">
-    <h3>Лофотены: острова рыбаков</h3>
-    <p>Архипелаг за Полярным кругом. Красные рыбацкие дома-рорбю над водой. Сушёная треска на верёвках. Горы, которые начинаются прямо из океана. Маршрут: Свольвер — Хеннингсвер — Рейне — мыс Å.</p>
-    <blockquote>Я сидел в рорбю в 23:30 при дневном свете и ел треску, пойманную 4 часа назад. Лофотены — это лучшее, что есть в Норвегии.</blockquote>`
+    meta:['10 хв читання','Гід'],
+    body:`<p>У червні в Норвегії сонце не заходить. Зовсім. О 2 ночі світло, як опівдні. Це дезорієнтує, але саме ці білі ночі роблять Норвегію країною, яку неможливо забути.</p>
+    <h3>Фіорди: головне слово</h3>
+    <p>Согне-фіорд — найдовший і найглибший у світі. Гейранге-фіорд — ЮНЕСКО, знамениті водоспади «Сім сестер». Флом — селище біля води, звідки ходить легендарний поїзд Flåmsbana.</p>
+    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=1200&q=80" alt="Норвегія фіорди">
+    <h3>Лофотени: острови рибалок</h3>
+    <p>Архіпелаг за Полярним колом. Червоні рибальські будинки-рорбю над водою. Сушена тріска на мотузках. Гори, що починаються прямо з океану.</p>
+    <blockquote>Я сидів у рорбю о 23:30 при денному світлі й їв тріску, впіймана 4 години тому. Лофотени — це найкраще, що є в Норвегії.</blockquote>`
   },
   oman: {
-    tag:'Ближний Восток · Оман',
-    title:'Оман: Маскат, дюны Вахиба и Страна Фимиама',
+    tag:'Близький Схід · Оман',
+    title:'Оман: Маскат, дюни Вахіба і Країна Ладану',
     img:'https://upload.wikimedia.org/wikipedia/commons/9/96/Wahiba_Sands_%2812%29.jpg',
-    meta:['8 мин чтения','Гид'],
-    body:`<p>Оман — ОАЭ без показухи. Та же роскошь, но без небоскрёбов и торговых центров. Маскат — один из самых безопасных городов мира. Пустыня Руб-эль-Хали — одна из самых пустых на земле.</p>
-    <h3>Маскат: 2 дня</h3>
-    <p>Большая мечеть Султана Кабуса — открыта для туристов утром, один из самых красивых интерьеров в исламской архитектуре. Рыбный рынок Мутрах — живой, аутентичный, пахнет рыбой и специями. Дворцовый квартал Аль-Алам — закрыт, но снаружи впечатляет.</p>
-    <h3>Пустыня Вахиба Сэндс</h3>
-    <p>3 часа от Маската. Ночь в лагере среди дюн — обязательно. Закат с вершины дюны — феноменален. Рассвет — ещё лучше. Верблюды — опциональны, но аутентично.</p>
-    <blockquote>В Омане нет слова «нет». Есть «да» и «завтра». Это делает страну невероятно комфортной.</blockquote>`
+    meta:['8 хв читання','Гід'],
+    body:`<p>Оман — ОАЕ без показухи. Та сама розкіш, але без хмарочосів і торгових центрів. Маскат — одне з найбезпечніших міст світу.</p>
+    <h3>Маскат: 2 дні</h3>
+    <p>Велика мечеть Султана Кабуса — відкрита для туристів вранці, один з найкрасивіших інтер'єрів в ісламській архітектурі. Рибний ринок Мутрах — живий, автентичний.</p>
+    <h3>Пустеля Вахіба Сендс</h3>
+    <p>3 години від Маскату. Ніч у таборі серед дюн — обов'язково. Захід сонця з вершини дюни — феноменальний.</p>
+    <blockquote>В Омані немає слова «ні». Є «так» і «завтра». Це робить країну неймовірно комфортною.</blockquote>`
   },
   portugal: {
-    tag:'Европа · Португалия',
-    title:'Португалия: Лиссабон, Алгарве и почему это лучшая страна Европы',
+    tag:'Європа · Португалія',
+    title:'Португалія: Лісабон, Алгарве і чому це найкраща країна Європи',
     img:'https://images.unsplash.com/photo-1513735539099-cf2b453cee26?w=1200&q=80',
-    meta:['9 мин чтения','Гид'],
-    body:`<p>Португалия стоит меньше Испании, красива как Италия, безопасна как Германия и расслаблена как никто. Европейцы это поняли — цены начали расти. Езжай сейчас.</p>
-    <h3>Лиссабон: 3 дня</h3>
-    <p>Алфама — старинный мавританский квартал с узкими улочками и фаду вечерами. Белем — башня в устье Тежу и пирожные паштел-де-Белем за €1.20. Лиссабон — лучший город для ходьбы в Европе, если любишь холмы.</p>
-    <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=80" alt="Лиссабон">
-    <h3>Алгарве: юг</h3>
-    <p>Лагос, Алжезур, Сагреш — атлантические пляжи с золотыми скалами. Не такие толпные, как Марбелья. Серфинг — один из лучших в Европе. Сезон: май–октябрь.</p>
-    <blockquote>Пастор де ната с эспрессо за €2.20 в Лиссабоне в 8 утра — это лучший завтрак в моей жизни, и я был в Токио.</blockquote>`
+    meta:['9 хв читання','Гід'],
+    body:`<p>Португалія коштує дешевше Іспанії, красива як Італія, безпечна як Німеччина і розслаблена як ніхто. Їдь зараз.</p>
+    <h3>Лісабон: 3 дні</h3>
+    <p>Алфама — старовинний мавританський квартал із вузькими вулицями і фаду увечері. Белен — вежа в гирлі Тежу і пиріжки паштел-де-Белен за €1.20. Лісабон — найкраще місто для прогулянок у Європі.</p>
+    <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=80" alt="Лісабон">
+    <h3>Алгарве: південь</h3>
+    <p>Лагуш, Алжезур, Сагреш — атлантичні пляжі із золотими скелями. Серфінг — один з найкращих у Європі.</p>
+    <blockquote>Паштел-де-ната з еспресо за €2.20 у Лісабоні о 8 ранку — найкращий сніданок у моєму житті, і я був у Токіо.</blockquote>`
   },
   kenya: {
-    tag:'Африка · Кения',
-    title:'Кения: Масаи Мара и побережье — сафари мечты',
+    tag:'Африка · Кенія',
+    title:'Кенія: Масаї Мара і узбережжя — сафарі мрії',
     img:'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=80',
-    meta:['8 мин чтения','Гид'],
-    body:`<p>Большая пятёрка: лев, слон, леопард, носорог, буйвол. В Масаи Мара можно увидеть всех пятерых за одно утро. В июле–октябре — ещё и миграцию: миллион гну переплывает Мару под взглядом крокодилов.</p>
-    <h3>Масаи Мара: планирование</h3>
-    <p>Лучшие базы — Keekorok Lodge или Mara Serena. Game drive утром (6–10) и вечером (15–18) — основное расписание. Минимум 3 ночи в заповеднике. Пик миграции — август.</p>
-    <h3>Побережье: Момбаса и Ламу</h3>
-    <p>После саванны — океан. Момбаса — индийское побережье, коралловый риф, рыба. Ламу — остров без автомобилей, только ослы и лодки, UNESCO с 2001 года.</p>
-    <blockquote>Я видел, как лев съедает антилопу в 15 метрах от джипа. Это не страшно — это честно.</blockquote>`
+    meta:['8 хв читання','Гід'],
+    body:`<p>Велика п'ятірка: лев, слон, леопард, носоріг, буйвіл. У Масаї Мара можна побачити всіх п'ятьох за один ранок. У липні–жовтні — ще й міграцію: мільйон гну перепливає Мару.</p>
+    <h3>Масаї Мара: планування</h3>
+    <p>Найкращі бази — Keekorok Lodge або Mara Serena. Game drive вранці (6–10) і ввечері (15–18). Мінімум 3 ночі в заповіднику. Пік міграції — серпень.</p>
+    <h3>Узбережжя: Момбаса і Ламу</h3>
+    <p>Після савани — океан. Момбаса — індійське узбережжя, кораловий риф. Ламу — острів без автомобілів, тільки осли і човни, ЮНЕСКО з 2001 року.</p>
+    <blockquote>Я бачив, як лев їсть антилопу за 15 метрів від джипа. Це не страшно — це чесно.</blockquote>`
   }
 };
 
@@ -1368,7 +1557,7 @@ function openArticle(id) {
     <div class="am-hero"><img src="${a.img}" alt="${a.title}"><div class="am-hero-ov"><p class="am-tag">${a.tag}</p><h1 class="am-title">${a.title}</h1></div></div>
     <div class="am-meta">${a.meta.map(m=>`<span>${m}</span>`).join('<span style="color:var(--warm)">·</span>')}</div>
     <div class="am-body">${a.body}</div>
-    <div class="am-share"><span class="am-share-label">Поделиться:</span><button class="am-share-btn">Twitter</button><button class="am-share-btn">Telegram</button><button class="am-share-btn">Скопировать</button></div>`;
+    <div class="am-share"><span class="am-share-label">Поділитись:</span><button class="am-share-btn">Twitter</button><button class="am-share-btn">Telegram</button><button class="am-share-btn">Скопіювати</button></div>`;
   modal.classList.add('open');
   modal.scrollTop = 0;
   document.body.style.overflow = 'hidden';
@@ -1378,9 +1567,7 @@ function closeArticle() {
   document.body.style.overflow = '';
 }
 
-// ──────────────────────────────────────────────
-// DESTINATION FILTER
-// ──────────────────────────────────────────────
+// ─── DESTINATION FILTER ───
 function filterDest(btn, region) {
   document.querySelectorAll('.dest-filters .filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
@@ -1389,36 +1576,33 @@ function filterDest(btn, region) {
   });
 }
 
-// ──────────────────────────────────────────────
-// GALLERY
-// ──────────────────────────────────────────────
+// ─── GALLERY ───
 const galPhotos = [
-  {src:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',title:'Утренний туман',loc:'Шотландия, Гайленд',cat:'nature'},
+  {src:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',title:'Ранковий туман',loc:'Шотландія, Гайленд',cat:'nature'},
   {src:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80',title:'Медина',loc:'Фес, Марокко',cat:'city'},
-  {src:'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=800&q=80',title:'Осенние клёны',loc:'Киото, Япония',cat:'nature'},
-  {src:'https://images.unsplash.com/photo-1531761535209-83234321e6b2?w=600&q=80',title:'Торрес',loc:'Патагония, Чили',cat:'nature'},
-  {src:'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=800&q=80',title:'Чёрный берег',loc:'Вик, Исландия',cat:'nature'},
-  {src:'https://images.unsplash.com/photo-1565073182887-6bcefbe225b1?w=800&q=80',title:'Башни Сванетии',loc:'Ушгули, Грузия',cat:'city'},
-  {src:'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&q=80',title:'Фьорд на закате',loc:'Норвегия',cat:'nature'},
-  {src:'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80',title:'Уличный рынок',loc:'Ханой, Вьетнам',cat:'food'},
-  {src:'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80',title:'Бунгало над водой',loc:'Мальдивы',cat:'nature'},
-  {src:'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80',title:'Амальфи',loc:'Побережье, Италия',cat:'city'},
-  {src:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80',title:'Горный рассвет',loc:'Непал',cat:'people'},
-  {src:'https://upload.wikimedia.org/wikipedia/commons/9/96/Wahiba_Sands_%2812%29.jpg',title:'Дюны Вахиба',loc:'Оман',cat:'nature'},
-  {src:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80',title:'Пицца Маргарита',loc:'Неаполь, Италия',cat:'food'},
-  {src:'https://bigkyiv.com.ua/_next/image/?url=https%3A%2F%2Fadm.bigkyiv.com.ua%2Fwp-content%2Fuploads%2F2019%2F03%2F1_6038-825x460.jpg&w=3840&q=75',title:'Трамвай 28',loc:'Лиссабон, Португалия',cat:'city'},
-  {src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw_yrO6D4l4rEKHYqhJVw_mS49i_MpK6ZBSQ&s',title:'Мачу-Пикчу',loc:'Перу',cat:'nature'},
-  {src:'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80',title:'Сафари',loc:'Масаи Мара, Кения',cat:'people'},
-  {src:'https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&q=80',title:'Храм на горе',loc:'Никко, Япония',cat:'city'},
-  {src:'https://images.unsplash.com/photo-1534885320675-b08aa131cc5e?w=800&q=80',title:'Старый Тбилиси',loc:'Грузия',cat:'city'},
-  {src:'https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=800&q=80',title:'Северное сияние',loc:'Исландия',cat:'nature'},
-  {src:'https://scandica.ru/images/sights/norway_2/hardangerbrua/6_hardangerbrua600.jpg',title:'Мост фьорда',loc:'Норвегия',cat:'nature'},
+  {src:'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=800&q=80',title:'Осінні клени',loc:'Кіото, Японія',cat:'nature'},
+  {src:'https://images.unsplash.com/photo-1531761535209-83234321e6b2?w=600&q=80',title:'Торрес',loc:'Патагонія, Чилі',cat:'nature'},
+  {src:'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=800&q=80',title:'Чорний берег',loc:'Вік, Ісландія',cat:'nature'},
+  {src:'https://images.unsplash.com/photo-1565073182887-6bcefbe225b1?w=800&q=80',title:'Вежі Сванетії',loc:'Ушгулі, Грузія',cat:'city'},
+  {src:'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&q=80',title:'Фіорд на заході',loc:'Норвегія',cat:'nature'},
+  {src:'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80',title:'Вуличний ринок',loc:'Ханой, В\'єтнам',cat:'food'},
+  {src:'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80',title:'Бунгало над водою',loc:'Мальдіви',cat:'nature'},
+  {src:'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80',title:'Амальфі',loc:'Узбережжя, Італія',cat:'city'},
+  {src:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80',title:'Гірський світанок',loc:'Непал',cat:'people'},
+  {src:'https://upload.wikimedia.org/wikipedia/commons/9/96/Wahiba_Sands_%2812%29.jpg',title:'Дюни Вахіба',loc:'Оман',cat:'nature'},
+  {src:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80',title:'Піца Маргарита',loc:'Неаполь, Італія',cat:'food'},
+  {src:'https://bigkyiv.com.ua/_next/image/?url=https%3A%2F%2Fadm.bigkyiv.com.ua%2Fwp-content%2Fuploads%2F2019%2F03%2F1_6038-825x460.jpg&w=3840&q=75',title:'Трамвай 28',loc:'Лісабон, Португалія',cat:'city'},
+  {src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw_yrO6D4l4rEKHYqhJVw_mS49i_MpK6ZBSQ&s',title:'Мачу-Пікчу',loc:'Перу',cat:'nature'},
+  {src:'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80',title:'Сафарі',loc:'Масаї Мара, Кенія',cat:'people'},
+  {src:'https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&q=80',title:'Храм на горі',loc:'Нікко, Японія',cat:'city'},
+  {src:'https://images.unsplash.com/photo-1534885320675-b08aa131cc5e?w=800&q=80',title:'Старий Тбілісі',loc:'Грузія',cat:'city'},
+  {src:'https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=800&q=80',title:'Північне сяйво',loc:'Ісландія',cat:'nature'},
+  {src:'https://scandica.ru/images/sights/norway_2/hardangerbrua/6_hardangerbrua600.jpg',title:'Міст фіорду',loc:'Норвегія',cat:'nature'},
 ];
 let lbIdx = 0;
-let lbFiltered = [...galPhotos];
 function buildGallery(photos) {
   const grid = document.getElementById('galGrid');
-  grid.innerHTML = photos.map((p,i)=>`
+  grid.innerHTML = photos.map((p)=>`
     <div class="gal-item" data-cat="${p.cat}" onclick="openLb(${galPhotos.indexOf(p)})">
       <img src="${p.src}" alt="${p.title}" loading="lazy">
       <div class="gal-ov"><div class="gal-ov-title">${p.title}</div><div class="gal-ov-loc">${p.loc}</div></div>
@@ -1428,11 +1612,11 @@ buildGallery(galPhotos);
 function filterGal(btn, cat) {
   document.querySelectorAll('.gallery-page .filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  lbFiltered = cat==='all' ? galPhotos : galPhotos.filter(p=>p.cat===cat);
-  buildGallery(lbFiltered);
+  const filtered = cat==='all' ? galPhotos : galPhotos.filter(p=>p.cat===cat);
+  buildGallery(filtered);
 }
 function openLb(idx) {
-  lbIdx = galPhotos.indexOf(galPhotos.find((_,i)=>i===idx));
+  lbIdx = idx;
   const p = galPhotos[idx];
   document.getElementById('lbImg').src = p.src;
   document.getElementById('lbTitle').textContent = p.title;
@@ -1449,16 +1633,14 @@ function lbNav(dir) {
   setTimeout(()=>{img.src=p.src;document.getElementById('lbTitle').textContent=p.title;document.getElementById('lbLoc').textContent=p.loc;img.style.opacity=1;},200);
 }
 
-// ──────────────────────────────────────────────
-// QUIZ
-// ──────────────────────────────────────────────
+// ─── QUIZ ───
 let qStep = 0;
 const qAnswers = [];
 const quizResults = {
-  active: { dest:'Патагония', country:'Чили', img:'https://images.unsplash.com/photo-1531761535209-83234321e6b2?w=1200&q=80', desc:'Ты создан для приключений. Торрес-дель-Пайне ждёт — гранитные башни, ледники и ветер, который сдувает всё лишнее.', facts:[{num:'43 км',lbl:'Тропа W'},{num:'5 дней',lbl:'Идеальный маршрут'},{num:'4215 м',lbl:'Высшая точка'}] },
-  relax:  { dest:'Мальдивы', country:'Индийский океан', img:'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1200&q=80', desc:'Тебе нужна пауза. Бирюзовая вода, белый коралловый песок и звук прибоя — это всё, что нужно сейчас.', facts:[{num:'1200',lbl:'Островов'},{num:'26°C',lbl:'Вода круглый год'},{num:'30м+',lbl:'Видимость'}] },
-  culture:{ dest:'Япония', country:'Азия', img:'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=1200&q=80', desc:'Ты ищешь глубину. Киото предлагает 1000-летнюю историю, чайную церемонию и ощущение другого измерения времени.', facts:[{num:'1600+',lbl:'Храмов в Киото'},{num:'11 вв',lbl:'История города'},{num:'3 дня',lbl:'Минимум для Киото'}] },
-  gastro: { dest:'Италия', country:'Европа', img:'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=80', desc:'Ты живёшь через еду — это правильно. Юг Италии — единственное место, где еда не просто вкусная, а принципиальная.', facts:[{num:'10 дней',lbl:'Идеальный маршрут'},{num:'€5',lbl:'Лучшая пицца'},{num:'3 региона',lbl:'Кампания, Амальфи, Сицилия'}] },
+  active: { dest:'Патагонія', country:'Чилі', img:'https://images.unsplash.com/photo-1531761535209-83234321e6b2?w=1200&q=80', desc:'Ти створений для пригод. Торрес-дель-Пайне чекає — гранітні вежі, льодовики і вітер, що здуває все зайве.', facts:[{num:'43 км',lbl:'Стежка W'},{num:'5 днів',lbl:'Ідеальний маршрут'},{num:'4215 м',lbl:'Найвища точка'}] },
+  relax:  { dest:'Мальдіви', country:'Індійський океан', img:'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1200&q=80', desc:'Тобі потрібна пауза. Бірюзова вода, білий коралевий пісок і звук прибою — це все, що потрібно зараз.', facts:[{num:'1200',lbl:'Островів'},{num:'26°C',lbl:'Вода цілий рік'},{num:'30м+',lbl:'Видимість'}] },
+  culture:{ dest:'Японія', country:'Азія', img:'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=1200&q=80', desc:'Ти шукаєш глибину. Кіото пропонує 1000-літню історію, чайну церемонію і відчуття іншого виміру часу.', facts:[{num:'1600+',lbl:'Храмів у Кіото'},{num:'11 ст',lbl:'Історія міста'},{num:'3 дні',lbl:'Мінімум для Кіото'}] },
+  gastro: { dest:'Італія', country:'Європа', img:'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=80', desc:'Ти живеш через їжу — це правильно. Південь Італії — єдине місце, де їжа не просто смачна, а принципова.', facts:[{num:'10 днів',lbl:'Ідеальний маршрут'},{num:'€5',lbl:'Найкраща піца'},{num:'3 регіони',lbl:'Кампанія, Амальфі, Сицилія'}] },
 };
 function selectOpt(el, val) {
   el.closest('.quiz-step').querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));
@@ -1479,7 +1661,7 @@ function qNav(dir) {
   dots[qStep].classList.add('cur');
   document.getElementById('qPrev').style.opacity = qStep===0?'0':'1';
   document.getElementById('qPrev').style.pointerEvents = qStep===0?'none':'all';
-  document.getElementById('qNext').textContent = qStep===steps.length-1 ? 'Показать результат' : 'Следующий';
+  document.getElementById('qNext').textContent = qStep===steps.length-1 ? 'Показати результат' : 'Наступний';
 }
 function showQuizResult() {
   const type = qAnswers[0] || 'culture';
@@ -1488,14 +1670,14 @@ function showQuizResult() {
   const res = document.getElementById('quizResult');
   res.innerHTML = `
     <div class="qr-img"><img src="${r.img}" alt="${r.dest}"></div>
-    <p class="qr-label">Ваше направление</p>
+    <p class="qr-label">Ваш напрямок</p>
     <h2 class="qr-dest">${r.dest}</h2>
     <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:24px">${r.country}</p>
     <p class="qr-desc">${r.desc}</p>
     <div class="qr-facts">${r.facts.map(f=>`<div class="qr-fact"><div class="qr-fact-num">${f.num}</div><div class="qr-fact-lbl">${f.lbl}</div></div>`).join('')}</div>
     <div style="display:flex;gap:12px;justify-content:center">
-      <button class="btn-primary" onclick="goPage('destinations')">Смотреть направления</button>
-      <button class="qr-retry" onclick="resetQuiz()">Пройти ещё раз</button>
+      <button class="btn-primary" onclick="goPage('destinations')">Дивитись напрямки</button>
+      <button class="qr-retry" onclick="resetQuiz()">Пройти ще раз</button>
     </div>`;
   res.classList.add('show');
 }
@@ -1507,12 +1689,10 @@ function resetQuiz() {
   document.querySelectorAll('.quiz-dot').forEach((d,i)=>{d.classList.remove('done','cur');if(i===0)d.classList.add('cur');});
   document.querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));
   document.getElementById('qPrev').style.opacity='0';
-  document.getElementById('qNext').textContent='Следующий';
+  document.getElementById('qNext').textContent='Наступний';
 }
 
-// ──────────────────────────────────────────────
-// CALCULATOR
-// ──────────────────────────────────────────────
+// ─── CALCULATOR ───
 const destCosts = {
   europe:{flight:500,hotel:{hostel:25,budget:80,mid:150,luxury:350},food:50,transport:20,tours:60},
   asia:{flight:700,hotel:{hostel:12,budget:40,mid:90,luxury:220},food:20,transport:8,tours:30},
@@ -1538,33 +1718,31 @@ function calcUpdate(){
   const insurance = toggleState.ctInsurance ? 35*days*pax : 0;
   const total = Math.round(flight+hotelCost+food+transport+tours+insurance);
   document.getElementById('crpTotal').textContent = total.toLocaleString();
-  const bars = [{name:'Перелёт',val:flight},{name:'Проживание',val:hotelCost},{name:'Питание',val:food},{name:'Транспорт',val:transport},{name:'Туры',val:tours},{name:'Страховка',val:insurance}].filter(b=>b.val>0);
+  const bars = [{name:'Переліт',val:flight},{name:'Проживання',val:hotelCost},{name:'Харчування',val:food},{name:'Транспорт',val:transport},{name:'Тури',val:tours},{name:'Страховка',val:insurance}].filter(b=>b.val>0);
   const max = Math.max(...bars.map(b=>b.val));
   document.getElementById('crpBars').innerHTML = bars.map(b=>`<div class="crp-bar-row"><div class="crp-bar-top"><span class="crp-bar-name">${b.name}</span><span class="crp-bar-val">$${Math.round(b.val).toLocaleString()}</span></div><div class="crp-bar-track"><div class="crp-bar-fill" style="width:${Math.round(b.val/max*100)}%"></div></div></div>`).join('');
   const tips = {
-    europe:'Используй Eurail Pass при маршруте через 3+ страны. Hostels и B&B — лучший компромисс цены и качества.',
-    asia:'Уличная еда экономит 60% на питании. Grab-такси дешевле местного и с фиксированной ценой.',
-    japan:'JR Pass окупается при маршруте Tokyo→Kyoto→Osaka. Капсульный отель — уникальный опыт и бюджетный вариант.',
-    usa:'Аренда авто часто выгоднее транспорта, особенно на западном побережье. Booking за 2+ месяца — минус 30%.',
-    la:'Hostels в Южной Америке — один из лучших способов познакомиться с попутчиками. Local buses дёшевы.',
-    africa:'Сафари — главная статья расходов. Групповые туры в 2–3 раза дешевле приватных.',
-    maldives:'Гостевые острова в 3–4 раза дешевле курортов. Местный транспорт (dhow boat) намного выгоднее спидботов.',
+    europe:'Використовуй Eurail Pass при маршруті через 3+ країни. Хостели і B&B — найкращий компроміс ціни й якості.',
+    asia:'Вулична їжа економить 60% на харчуванні. Grab-таксі дешевше місцевого і з фіксованою ціною.',
+    japan:'JR Pass окупається при маршруті Tokyo→Kyoto→Osaka. Капсульний готель — унікальний досвід і бюджетний варіант.',
+    usa:'Оренда авто часто вигідніша транспорту, особливо на Заході. Бронювання за 2+ місяці — мінус 30%.',
+    la:'Хостели в Південній Америці — один з найкращих способів познайомитися з попутниками.',
+    africa:'Сафарі — головна стаття витрат. Групові тури в 2–3 рази дешевші за приватні.',
+    maldives:'Гостьові острови в 3–4 рази дешевші за курорти. Місцевий транспорт (dhow boat) набагато вигідніший за спідботи.',
   };
-  document.getElementById('crpTips').innerHTML = `<div class="crp-tip-title">Советы по экономии</div>${(tips[dest]||'').split('. ').filter(Boolean).map(t=>`<div class="crp-tip-item">${t}</div>`).join('')}`;
+  document.getElementById('crpTips').innerHTML = `<div class="crp-tip-title">Поради з економії</div>${(tips[dest]||'').split('. ').filter(Boolean).map(t=>`<div class="crp-tip-item">${t}</div>`).join('')}`;
 }
 calcUpdate();
 
-// ──────────────────────────────────────────────
-// NEWSLETTER
-// ──────────────────────────────────────────────
+// ─── NEWSLETTER ───
 function nlSubmit(){
   const inp = document.getElementById('nlEmail');
   if(inp.value.includes('@')){
     const row = inp.closest('.nl-row');
-    row.innerHTML='<span style="padding:16px 20px;font-size:13px;color:var(--sage);letter-spacing:1px">Готово! Ждите письма в пятницу.</span>';
+    row.innerHTML='<span style="padding:16px 20px;font-size:13px;color:var(--sage);letter-spacing:1px">Готово! Чекайте листа в п\'ятницю.</span>';
   } else {
     inp.style.outline='2px solid var(--rust)';
-    inp.placeholder='Введите корректный email';
+    inp.placeholder='Введіть коректний email';
   }
 }
 </script>
