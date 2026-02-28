@@ -95,7 +95,8 @@ nav.solid {
 .search-input-row{display:flex;border-bottom:2px solid var(--gold);align-items:center;gap:16px;padding-bottom:12px}
 .search-input-row input{flex:1;background:none;border:none;outline:none;font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);color:var(--cream);font-style:italic}
 .search-input-row input::placeholder{color:rgba(245,240,232,.25)}
-.search-close{background:none;border:none;color:var(--mid);font-size:22px;line-height:1}
+.search-close{background:none;border:none;color:var(--cream);font-size:28px;line-height:1;cursor:pointer;transition:color .2s}
+.search-close:hover{color:var(--gold)}
 .search-results{margin-top:32px;display:flex;flex-direction:column;gap:3px;max-height:360px;overflow-y:auto}
 .s-result{padding:14px 20px;background:rgba(245,240,232,.04);color:var(--cream);display:flex;align-items:center;gap:16px;transition:background .2s}
 .s-result:hover{background:rgba(201,149,42,.1)}
@@ -435,7 +436,7 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:16px;height:16px;b
 .am-hero{height:440px;overflow:hidden;margin:-64px -64px 48px;position:relative}
 .am-hero img{width:100%;height:100%;object-fit:cover}
 .am-hero-ov{position:absolute;bottom:0;left:0;right:0;padding:40px 64px 32px;background:linear-gradient(to top,rgba(13,12,11,.9),transparent)}
-.am-tag{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.am-tag{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;text-shadow:0 0 2px rgba(0,0,0,0.5)}
 .am-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,46px);color:var(--cream);font-weight:700;line-height:1.1}
 .am-meta{display:flex;gap:24px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:32px}
 .am-body p{font-family:'Cormorant Garamond',serif;font-size:20px;line-height:1.75;color:#3a3228;margin-bottom:20px}
@@ -463,6 +464,12 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
 .footer-bottom a{color:var(--gold);text-decoration:none}
 
 /* MOBILE NAV OVERLAY */
+/* hide recalc button */
+.calc-btn{display:none !important}
+
+/* hide share block inside article modal so no extra button */
+
+
 .mob-overlay{position:fixed;inset:0;z-index:180;background:rgba(13,12,11,.98);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;opacity:0;pointer-events:none;transition:opacity .3s}
 .mob-overlay.open{opacity:1;pointer-events:all}
 .mob-nav-btn{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,44px);color:rgba(245,240,232,.5);background:none;border:none;transition:color .2s;font-style:italic}
@@ -697,8 +704,11 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
 
 @media(max-width:600px){
   nav{padding:10px 12px}
+  .ticker{display:none!important}
+  .hero-bg{animation:none}
   nav.solid{padding:6px 12px;min-height:60px}
   .hero{height:75vh;min-height:400px}
+  .rv{opacity:1;transform:none;transition:none}
   .hero-content{padding:0 16px 40px}
   .hero-eyebrow{margin-bottom:12px}
   .hero-tag{font-size:7px;padding:4px 10px}
@@ -948,7 +958,7 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
   .gl-foot{font-size:8px;gap:4px}
   .quiz-page{padding:32px 12px}
   .quiz-wrap .stitle{font-size:clamp(20px,5vw,28px)}
-  .quiz-q{font-size:clamp(14px,3vw:20px}
+  .quiz-q{font-size:clamp(14px,3vw,20px)}
   .quiz-opt{padding:10px 10px;gap:10px}
   .quiz-opt-icon{font-size:20px}
   .quiz-opt-title{font-size:12px}
@@ -1156,7 +1166,7 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
     <div class="featured-grid rv">
       <div class="feat-main">
         <span class="feat-badge">Cover Story</span>
-        <img src="img/Марокко.jpg" alt="Марокко">
+        <img src="img/цитата-право.jpg" alt="Марокко">
         <div class="feat-info">
           <p class="feat-region">Африка · Марокко</p>
           <h3>Лабіринти Фесу: загублений у часі</h3>
@@ -1940,6 +1950,25 @@ const articles = {
   }
 };
 
+function setupShareButtons() {
+  document.querySelectorAll('.am-share-btn').forEach(btn => {
+    btn.onclick = () => {
+      const type = btn.textContent.trim().toLowerCase();
+      const url = window.location.href;
+      if(type === 'twitter'){
+        window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(url),'_blank');
+      } else if(type === 'telegram'){
+        window.open('https://t.me/share/url?url='+encodeURIComponent(url),'_blank');
+      } else if(type === 'скопійовано' || type === 'скопіювати' || type==='копіювати' || type==='скопіювати'){
+        navigator.clipboard.writeText(url);
+        const orig = btn.textContent;
+        btn.textContent = 'Скопійовано';
+        setTimeout(()=>{btn.textContent = orig;},2000);
+      }
+    };
+  });
+}
+
 function openArticle(id) {
   const a = articles[id];
   if(!a) return;
@@ -1952,6 +1981,7 @@ function openArticle(id) {
   modal.classList.add('open');
   modal.scrollTop = 0;
   document.body.style.overflow = 'hidden';
+  setupShareButtons();
 }
 function closeArticle() {
   document.getElementById('articleModal').classList.remove('open');
@@ -2147,6 +2177,12 @@ function calcUpdate(){
   document.getElementById('crpTips').innerHTML = `<div class="crp-tip-title">Поради з економії</div>${(tips[dest]||'').split('. ').filter(Boolean).map(t=>`<div class="crp-tip-item">${t}</div>`).join('')}`;
 }
 calcUpdate();
+
+// ─── LAZY LOAD IMAGES & PERFORMANCE HINTS ───
+// ensure all images use lazy loading to improve mobile performance
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('img').forEach(img => { img.loading = 'lazy'; });
+});
 
 // ─── NEWSLETTER ───
 function nlSubmit(){
