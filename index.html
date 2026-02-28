@@ -54,7 +54,7 @@ nav.solid {
   background: rgba(13,12,11,.95);
   backdrop-filter: blur(8px);
   padding: 10px 56px;
-  min-height: 72px; /* ← додай це */
+  min-height: 72px;
 }
 .logo {
   display: flex;
@@ -637,11 +637,12 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
   .calc-page{grid-template-columns:1fr}
   .calc-result{position:static}
 }
+
 @media(max-width:900px){
   nav{padding:16px 24px}
   nav.solid{padding:12px 24px}
   .nav-links{display:none}
-  .mob-menu-btn{display:flex}
+  .mob-menu-btn{display:flex!important}
   .featured,.destinations,.guide,.tips,.newsletter,.quote-strip,footer,.guides-page,.quiz-page,.gallery-page,.calc-page{padding-left:24px;padding-right:24px}
   .featured-grid{grid-template-columns:1fr}
   .feat-main{grid-row:auto;height:420px}
@@ -661,13 +662,371 @@ footer{background:var(--ink);padding:80px 56px 44px;color:rgba(245,240,232,.5)}
   .dest-full-grid{grid-template-columns:1fr;padding:0 24px 60px}
   .dest-filters{padding:0 24px}
 }
+
+@media(max-width:768px){
+  body{font-size:14px}
+  nav{padding:12px 16px}
+  nav.solid{padding:8px 16px}
+  .logo img{height:48px}
+  .logo-text{font-size:28px;letter-spacing:4px}
+  .page-hero-content .stitle{font-size:clamp(32px,6vw,60px)}
+  .hero-title{font-size:clamp(40px,6vw,70px)}
+  .hero-sub{font-size:16px;line-height:1.6}
+  .stitle{font-size:clamp(24px,5vw,40px)}
+  .slabel{font-size:8px;letter-spacing:3px}
+  .featured,.destinations,.guide,.tips,.newsletter,.quote-strip,.guides-page,.quiz-page,.gallery-page{padding:60px 16px}
+  .featured-top{margin-bottom:32px}
+  .dest-header{margin-bottom:32px}
+  .guide-header{grid-template-columns:1fr;gap:24px;margin-bottom:36px}
+  .guide-desc{font-size:15px;line-height:1.6}
+  .quiz-q{font-size:clamp(18px,4vw,28px)}
+  .qr-dest{font-size:clamp(32px,4vw,48px)}
+  .qr-desc{font-size:16px;line-height:1.6}
+  .am-inner{padding:24px;margin:40px auto}
+  .am-hero{margin:-24px -24px 24px;height:240px}
+  .am-body p{font-size:16px;line-height:1.7}
+  .am-body h3{font-size:20px;margin:24px 0 12px}
+  .footer-top{grid-template-columns:1fr;gap:32px}
+  .footer-logo{font-size:36px}
+  .nl-row{flex-direction:column}
+  .nl-row input{padding:12px 14px;font-size:14px}
+  .nl-submit{padding:12px 20px;font-size:10px}
+  .btn-primary,.btn-outline,.btn-ghost{padding:14px 24px;font-size:9px;letter-spacing:2px}
+  .hero-scroll{display:none}
+}
+
 @media(max-width:600px){
+  nav{padding:10px 12px}
+  nav.solid{padding:6px 12px;min-height:60px}
+  .hero{height:75vh;min-height:400px}
+  .hero-content{padding:0 16px 40px}
+  .hero-eyebrow{margin-bottom:12px}
+  .hero-tag{font-size:7px;padding:4px 10px}
+  .hero-issue{font-size:7px}
+  .hero-title{font-size:clamp(32px,7vw,48px);line-height:1;margin-bottom:16px}
+  .hero-sub{font-size:14px;margin-bottom:24px}
   .hero-stats{display:none}
+  .hero-actions{gap:12px;flex-direction:column;width:100%}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center}
+  .ticker{font-size:9px;padding:8px 0}
+  .featured,.destinations,.guide,.tips,.newsletter,.quote-strip,.guides-page,.gallery-page,.quiz-page,.calc-page{padding:40px 16px}
+  .page-hero-content{padding:0 16px 40px}
+  .page-hero-content .stitle{font-size:clamp(28px,6vw,44px)}
+  .featured-grid{gap:2px}
+  .feat-main{height:300px}
+  .feat-card{height:240px}
+  .feat-info{padding:20px}
+  .feat-info h3{font-size:18px}
+  .feat-info p{font-size:12px}
+  .feat-badge{font-size:7px;padding:4px 8px}
+  .dest-header{margin-bottom:24px}
+  .dest-counter{font-size:60px}
   .dest-grid{grid-template-columns:1fr}
-  .footer-top{grid-template-columns:1fr}
-  .seasons-grid{grid-template-columns:1fr 1fr}
-  .gallery-grid{columns:1}
-  .qr-facts{grid-template-columns:1fr}
+  .dest-card{height:300px}
+  .dest-num{font-size:32px;top:12px;left:12px}
+  .dest-ov{padding:20px}
+  .dest-name{font-size:20px}
+  .quote-strip{grid-template-columns:1fr;gap:24px;padding:40px 16px}
+  .q-img{height:180px}
+  .q-ornament{font-size:60px}
+  .q-text{font-size:18px;line-height:1.4}
+  .q-author{font-size:8px}
+  .guide-grid{grid-template-columns:1fr;gap:2px}
+  .guide-item{overflow:hidden}
+  .guide-img{height:180px}
+  .guide-body{padding:20px}
+  .guide-body h4{font-size:17px;margin-bottom:8px}
+  .guide-body p{font-size:13px}
+  .guide-foot{flex-direction:column;gap:8px;align-items:flex-start;margin-top:12px;padding-top:12px}
+  .map-ctn .stitle{font-size:clamp(24px,5vw,36px);margin-bottom:12px}
+  .map-ctn p{font-size:14px;max-width:280px;margin-bottom:24px}
+  .tips-grid{grid-template-columns:1fr;gap:2px}
+  .tip-hero{height:300px}
+  .tip-hero-ov{padding:30px;justify-content:flex-end}
+  .tip-hero-ov h3{font-size:24px;margin-bottom:10px}
+  .tip-hero-ov p{font-size:13px}
+  .tip-row{flex-direction:column;height:auto}
+  .tip-num{width:48px;min-width:48px;font-size:24px;padding:12px}
+  .tip-img{width:100%;min-width:100%;height:150px}
+  .tip-body{padding:16px}
+  .tip-body h4{font-size:16px}
+  .tip-body p{font-size:12px}
+  .seasons-grid{grid-template-columns:1fr}
+  .season-card img{height:280px}
+  .season-name{font-size:32px}
+  .season-months{font-size:8px}
+  .season-places span{font-size:10px;line-height:1.5}
+  .newsletter{grid-template-columns:1fr;gap:32px;padding:40px 16px}
+  .nl-img{height:240px}
+  .nl-form .stitle{margin-bottom:12px}
+  .nl-desc{font-size:14px;margin-bottom:24px}
+  .dest-filters{gap:6px;padding:0;margin:20px 0;flex-wrap:wrap}
+  .filter-btn{font-size:8px;padding:8px 14px}
+  .dest-full-grid{grid-template-columns:1fr;gap:2px;padding:0 16px 40px}
+  .dest-full-card{height:320px}
+  .dest-full-card img{filter:brightness(0.75)}
+  .dfc-ov{padding:20px}
+  .dfc-name{font-size:22px}
+  .dfc-desc{font-size:12px}
+  .dfc-btn{font-size:7px;padding:5px 12px}
+  .guides-featured{grid-template-columns:1fr;gap:2px;margin-bottom:2px}
+  .gf-card{height:300px}
+  .gf-ov{padding:28px}
+  .gf-tag{font-size:8px}
+  .gf-ov h3{font-size:20px}
+  .gf-ov p{font-size:13px}
+  .guides-list{grid-template-columns:1fr;gap:2px;margin-top:2px}
+  .gl-item{overflow:hidden}
+  .gl-img{height:180px}
+  .gl-body{padding:16px}
+  .gl-cat{font-size:7px}
+  .gl-body h4{font-size:16px;margin-bottom:6px}
+  .gl-body p{font-size:12px}
+  .gl-foot{flex-direction:column;align-items:flex-start;gap:6px;font-size:8px}
+  .quiz-wrap{max-width:100%;width:100%;padding:0}
+  .quiz-wrap .stitle{font-size:clamp(24px,5vw,32px);margin-bottom:8px}
+  .quiz-wrap .quiz-sub{font-size:14px;margin-bottom:32px}
+  .quiz-q{font-size:clamp(16px,4vw,22px);margin-bottom:24px}
+  .quiz-options{grid-template-columns:1fr;gap:8px}
+  .quiz-opt{padding:14px 12px;gap:12px}
+  .quiz-opt-icon{font-size:24px}
+  .quiz-opt-title{font-size:13px}
+  .quiz-opt-sub{font-size:11px}
+  .quiz-prog{margin-bottom:32px;gap:5px}
+  .quiz-dot{width:6px;height:6px}
+  .quiz-nav{margin-top:24px;gap:12px}
+  .quiz-next,.quiz-prev{padding:12px 24px;font-size:9px}
+  .qr-img{height:240px;margin:0 auto 24px}
+  .qr-label{font-size:8px}
+  .qr-dest{font-size:clamp(28px,5vw,40px);margin-bottom:12px}
+  .qr-desc{font-size:14px;line-height:1.6;margin-bottom:24px}
+  .qr-facts{grid-template-columns:1fr;gap:12px;margin-bottom:24px}
+  .qr-fact{padding:16px}
+  .qr-fact-num{font-size:28px}
+  .qr-fact-lbl{font-size:8px}
+  .calc-page{grid-template-columns:1fr;gap:24px}
+  .calc-form{padding:32px 16px;background:var(--cream)}
+  .calc-form .stitle{margin-bottom:6px}
+  .calc-group label{font-size:8px}
+  .calc-select,.calc-input{font-size:13px;padding:12px 12px}
+  .range-val{font-size:24px}
+  .calc-toggles{gap:8px}
+  .calc-toggle{padding:12px 14px;font-size:12px}
+  .ct-label{font-size:12px}
+  .ct-extra{font-size:10px}
+  .calc-btn{padding:14px;font-size:10px;margin-top:20px}
+  .calc-result-panel{padding:32px 16px}
+  .crp-label{font-size:7px;margin-bottom:16px}
+  .crp-total-num{font-size:48px}
+  .crp-total-cur{font-size:14px}
+  .crp-bars{gap:12px}
+  .crp-bar-top{font-size:10px}
+  .crp-tip-item{font-size:11px}
+  .gallery-cats{gap:2px;margin-bottom:2px}
+  .gallery-grid{columns:1;gap:2px;padding-bottom:40px}
+  .gal-item{margin-bottom:2px}
+  .gal-ov{padding:12px}
+  .gal-ov-title{font-size:14px}
+  .gal-ov-loc{font-size:8px}
+  .lb-img{max-height:70vh;max-width:90vw}
+  .lb-close{top:14px;right:14px;font-size:22px}
+  .lb-prev,.lb-next{width:40px;height:40px;font-size:16px;top:40%}
+  .lb-prev{left:8px}
+  .lb-next{right:8px}
+  .lb-title{font-size:16px}
+  .lb-loc{font-size:8px;margin-top:4px}
+  .am-inner{max-width:100%;padding:16px}
+  .am-hero{height:200px;margin:-16px -16px 20px}
+  .am-meta{flex-direction:column;gap:8px;font-size:9px;margin-bottom:20px}
+  .am-body p{font-size:14px;line-height:1.6;margin-bottom:16px}
+  .am-body h3{font-size:18px;margin:20px 0 10px}
+  .am-body blockquote{padding:12px 16px;margin:20px 0;font-size:16px}
+  .am-body img{margin:20px 0;height:200px}
+  .am-share{flex-direction:column;gap:8px;margin-top:24px;padding-top:16px}
+  .am-share-label{font-size:8px}
+  .am-share-btn{font-size:8px;padding:8px 14px}
+  .am-close{top:12px;right:12px;width:36px;height:36px;font-size:16px}
+  footer{padding:40px 16px 24px}
+  .footer-top{gap:24px;margin-bottom:24px;padding-bottom:24px}
+  .footer-logo{font-size:28px;margin-bottom:10px}
+  .footer-tagline{font-size:12px;max-width:100%;margin-bottom:16px}
+  .footer-social{gap:8px}
+  .soc-btn{width:36px;height:36px;font-size:11px}
+  .fc h5{font-size:8px;margin-bottom:12px}
+  .fc ul{gap:8px}
+  .fc ul li a,.fc ul li button{font-size:12px}
+  .footer-bottom{font-size:10px;flex-direction:column;gap:8px}
+  .mob-overlay{gap:4px}
+  .mob-nav-btn{font-size:clamp(20px,5vw,32px);padding:8px}
+  #btt{bottom:24px;right:24px;width:40px;height:40px;font-size:16px}
+  #cur{display:none}
+  body{cursor:auto}
+}
+
+@media(max-width:480px){
+  nav{padding:8px 12px}
+  .logo img{height:40px}
+  .logo-text{font-size:20px;letter-spacing:2px}
+  .hero{height:60vh;min-height:350px}
+  .hero-content{padding:0 12px 32px}
+  .hero-title{font-size:clamp(28px,6vw,40px)}
+  .hero-sub{font-size:13px;margin-bottom:16px}
+  .hero-actions{gap:10px}
+  .btn-primary,.btn-outline,.btn-ghost{padding:12px 16px;font-size:8px}
+  .featured,.destinations,.guide,.tips,.newsletter,.quote-strip,.guides-page,.gallery-page,.quiz-page,.calc-page{padding:32px 12px}
+  .page-hero-content{padding:0 12px 32px}
+  .featured-grid{gap:1px}
+  .feat-main{height:240px}
+  .feat-card{height:200px}
+  .feat-info{padding:16px}
+  .feat-info h3{font-size:16px}
+  .feat-info p{font-size:11px;margin-top:4px}
+  .stitle{font-size:clamp(22px,5vw,32px)}
+  .dest-grid{grid-template-columns:1fr;gap:1px}
+  .dest-card{height:240px}
+  .dest-num{font-size:24px;top:8px;left:8px}
+  .dest-ov{padding:16px}
+  .dest-name{font-size:18px}
+  .dest-tags{gap:4px;margin-top:6px}
+  .dest-tag{font-size:8px;padding:2px 6px}
+  .quote-strip{gap:16px;padding:32px 12px}
+  .q-img{height:140px}
+  .q-ornament{font-size:48px;margin-bottom:-8px}
+  .q-text{font-size:16px}
+  .q-author{font-size:7px}
+  .guide-img{height:140px}
+  .guide-body{padding:14px}
+  .guide-body h4{font-size:15px;margin-bottom:6px}
+  .guide-body p{font-size:12px}
+  .guide-foot{font-size:8px;gap:6px}
+  .map-strip{height:300px}
+  .map-ctn .stitle{font-size:clamp(20px,5vw,28px);margin-bottom:10px}
+  .map-ctn p{font-size:13px;max-width:240px;margin-bottom:16px}
+  .tip-hero{height:240px}
+  .tip-hero-ov{padding:20px}
+  .tip-hero-ov h3{font-size:20px;margin-bottom:8px}
+  .tip-hero-ov p{font-size:12px;line-height:1.5}
+  .tip-row{gap:8px}
+  .tip-num{width:40px;min-width:40px;font-size:20px;padding:8px}
+  .tip-img{height:120px}
+  .tip-body{padding:12px}
+  .tip-cat{font-size:7px}
+  .tip-body h4{font-size:14px;margin-bottom:4px}
+  .tip-body p{font-size:11px}
+  .seasons-grid{grid-template-columns:1fr;gap:1px}
+  .season-card img{height:240px}
+  .season-lbl{padding:20px 16px}
+  .season-name{font-size:28px;letter-spacing:1px}
+  .season-months{font-size:7px}
+  .season-places span{font-size:10px}
+  .nl-img{height:200px}
+  .nl-form .stitle{font-size:clamp(20px,5vw,28px);margin-bottom:10px}
+  .nl-desc{font-size:13px;margin-bottom:16px}
+  .nl-row{gap:0;margin-bottom:10px}
+  .nl-row input{border-bottom:none;border-right:1px solid var(--warm);padding:12px 10px;font-size:12px}
+  .nl-submit{border-left:1px solid var(--warm);padding:12px 16px;font-size:9px}
+  .dest-filters{margin:16px 0}
+  .filter-btn{font-size:7px;padding:6px 10px}
+  .dest-full-grid{grid-template-columns:1fr;gap:1px;padding:0 12px 32px}
+  .dest-full-card{height:280px}
+  .dfc-ov{padding:16px}
+  .dfc-name{font-size:20px}
+  .dfc-desc{font-size:11px}
+  .dfc-tag-item{font-size:7px;padding:2px 6px}
+  .gf-card{height:240px}
+  .gf-ov{padding:20px}
+  .gf-tag{font-size:7px}
+  .gf-ov h3{font-size:18px}
+  .gf-ov p{font-size:12px}
+  .gf-meta{font-size:8px;gap:12px}
+  .guides-list{grid-template-columns:1fr;gap:1px}
+  .gl-img{height:140px}
+  .gl-body{padding:12px}
+  .gl-cat{font-size:7px;margin-bottom:4px}
+  .gl-body h4{font-size:14px;margin-bottom:4px}
+  .gl-body p{font-size:11px}
+  .gl-foot{font-size:8px;gap:4px}
+  .quiz-page{padding:32px 12px}
+  .quiz-wrap .stitle{font-size:clamp(20px,5vw,28px)}
+  .quiz-q{font-size:clamp(14px,3vw:20px}
+  .quiz-opt{padding:10px 10px;gap:10px}
+  .quiz-opt-icon{font-size:20px}
+  .quiz-opt-title{font-size:12px}
+  .quiz-opt-sub{font-size:10px}
+  .quiz-prog{gap:4px;margin-bottom:24px}
+  .quiz-dot{width:5px;height:5px}
+  .quiz-nav{gap:8px;margin-top:16px}
+  .quiz-next,.quiz-prev{padding:10px 16px;font-size:8px}
+  .qr-img{height:180px;margin:0 auto 16px}
+  .qr-label{font-size:7px;margin-bottom:6px}
+  .qr-dest{font-size:clamp(24px,5vw,32px);margin-bottom:8px}
+  .qr-desc{font-size:13px;line-height:1.5;margin-bottom:16px}
+  .qr-facts{grid-template-columns:1fr;gap:10px;margin-bottom:16px}
+  .qr-fact{padding:12px}
+  .qr-fact-num{font-size:24px}
+  .qr-fact-lbl{font-size:7px}
+  .calc-form{padding:24px 12px}
+  .calc-group label{font-size:7px;margin-bottom:6px}
+  .calc-select,.calc-input{font-size:12px;padding:10px 10px}
+  .range-val{font-size:20px}
+  .calc-toggles{gap:6px}
+  .calc-toggle{padding:10px 12px;font-size:11px}
+  .ct-label{font-size:11px}
+  .calc-btn{padding:12px;font-size:9px;margin-top:16px}
+  .calc-result-panel{padding:24px 12px}
+  .crp-label{font-size:7px;margin-bottom:12px}
+  .crp-total-num{font-size:40px}
+  .crp-total-cur{font-size:12px}
+  .crp-tip-item{font-size:10px}
+  .gallery-grid{columns:1;gap:1px;padding-bottom:32px}
+  .gal-item{margin-bottom:1px}
+  .lb-close{top:10px;right:10px;font-size:20px}
+  .lb-prev,.lb-next{width:36px;height:36px;font-size:14px}
+  .am-inner{padding:12px;margin:30px auto}
+  .am-hero{height:160px;margin:-12px -12px 16px}
+  .am-close{width:32px;height:32px;font-size:14px}
+  .am-meta{font-size:8px}
+  .am-body p{font-size:13px;line-height:1.6;margin-bottom:12px}
+  .am-body h3{font-size:16px;margin:16px 0 8px}
+  .am-body blockquote{padding:10px 12px;margin:16px 0;font-size:14px}
+  footer{padding:32px 12px 16px}
+  .footer-logo{font-size:24px}
+  .footer-tagline{font-size:11px;margin-bottom:12px}
+  .footer-social{gap:6px}
+  .soc-btn{width:32px;height:32px;font-size:10px}
+  .fc h5{font-size:7px;margin-bottom:10px}
+  .fc ul li a,.fc ul li button{font-size:11px}
+  .footer-bottom{font-size:9px}
+  #btt{bottom:16px;right:16px}
+}
+
+@media(max-width:380px){
+  .hero{height:50vh}
+  .hero-content{padding:0 10px 24px}
+  .hero-title{font-size:clamp(24px,5vw,32px);line-height:0.95}
+  .hero-sub{font-size:12px;margin-bottom:12px}
+  .btn-primary,.btn-ghost{font-size:7px;padding:10px 12px}
+  .featured,.destinations,.guide,.tips,.newsletter,.quote-strip,.gallery-page,.quiz-page{padding:24px 10px}
+  .stitle{font-size:clamp(18px,4vw,26px)}
+  .slabel{font-size:7px}
+  .feat-main{height:200px}
+  .feat-card{height:160px}
+  .feat-info{padding:12px}
+  .dest-card{height:200px}
+  .dest-num{font-size:20px}
+  .quote-strip{gap:12px;padding:24px 10px}
+  .q-img{height:120px}
+  .q-ornament{font-size:40px}
+  .q-text{font-size:14px}
+  .guide-img{height:120px}
+  .guide-body{padding:12px}
+  .guide-body h4{font-size:13px}
+  .quiz-q{font-size:clamp(12px,3vw,18px)}
+  .qr-dest{font-size:clamp(20px,5vw,28px)}
+  .calc-form{padding:20px 10px}
+  .nl-row input{font-size:11px;padding:10px 8px}
+  footer{padding:24px 10px}
+  .footer-logo{font-size:20px}
 }
 </style>
 </head>
